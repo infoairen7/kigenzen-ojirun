@@ -5,7 +5,6 @@
    - kigenzen-ojirun-itch-en.zip  : the English edition at the zip root, for an English itch.io page
    three.js r128 (MIT) is bundled next to index.html, with cdnjs as a fallback."""
 import os, sys, shutil, stat, zipfile, datetime
-SERVER = os.environ.get('TORCH_SERVER', '').strip().replace("'", '')   # the online race server baked into the build (empty: not set up yet)
 
 SRC, THREE, THREE_LICENSE, OUTDIR = sys.argv[1:5]
 
@@ -26,13 +25,11 @@ assert NEW_FATAL in html.split('<script', 1)[0] and html.count(NEW_FATAL) == 2
 def page(html, lang):
     """A full document around the build: doctype (standards mode), charset, a phone-friendly viewport and a description.
     The English edition also starts in English."""
-    desc = ('A silly one-button 3D race: six ojisan carry torches from 10,000 BC to the present, through nine eras. Hold to run, race friends online, break pots for mischief items.'
-            if lang == 'en' else 'たいまつを掲げたおじさん6人が紀元前から令和まで9つの時代を走る、ボタンひとつのドタバタ3Dレース。オンラインで最大6人対戦。')
+    desc = ('A silly one-button 3D race: six ojisan carry torches from 10,000 BC to the present, through nine eras. Hold to run, race five rivals, break pots for mischief items.'
+            if lang == 'en' else 'たいまつを掲げたおじさん6人が紀元前から令和まで9つの時代を走る、ボタンひとつのドタバタ3Dレース。')
     head = ('<!doctype html>\n<html lang="%s">\n<head>\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            '<meta name="description" content="%s">\n'
-            '<!-- オンライン対戦の中継サーバー（任意。空欄ならブラウザどうしで直接つながります） / optional online relay server (empty = browser to browser), e.g. https://kigenzen-ojirun-online.NAME.workers.dev -->\n'
-            "<script>window.TORCH_SERVER = window.TORCH_SERVER || '%s';</script>\n") % (lang, desc, SERVER)
+            '<meta name="description" content="%s">\n') % (lang, desc)
     if lang == 'en':
         head += "<script>window.TORCH_DEFAULT_LANG = 'en';</script>\n"
         html = html.replace('<title>紀元前おじラン！</title>', '<title>Kigenzen Ojirun!</title>', 1)
@@ -43,7 +40,7 @@ README = f'''紀元前おじラン！（{today}）
 ================================================================
 
 ■ 遊び方
-  index.html をダブルクリックすると、ブラウザでゲームが始まります（オンライン対戦以外はネット接続不要）。
+  index.html をダブルクリックすると、ブラウザでゲームが始まります（ネット接続は不要です）。
   推奨：Chrome / Edge / Safari の最新版。画面は 1280×720 以上がおすすめです。
   スマートフォン・タブレットは横向きで遊べます（RUN ボタンを長押しで走ります）。
 
@@ -64,7 +61,6 @@ README = f'''紀元前おじラン！（{today}）
   ・原始時代（BC10,000）から令和（2026年）まで、9つの時代を走れます。「時代を選ぶ」からどの時代でも選べ、
     クリアすると結果画面の「次の時代へ」で続きの時代に進めます。時代ごとに景色・障害物・落ちる先・BGMが変わります。
   ・タイトルの「モード」で「6人レース（コンピューターのライバル5人）」と「タイムアタック」を選べます。
-  ・「オンライン対戦」では、ほかのプレイヤーと最大6人で同時に走れます（下の「オンライン対戦」を参照）。
   ・タイムアタックでは、自分のベスト記録の走りが半透明の「ゴースト」として一緒に走ります（設定でオフにできます）。
   ・「コース」は標準 2,400m と短縮 600m。最初は短縮がおすすめです。
   ・焚き火ゲートをくぐるとスタミナが全回復。タイトルの「休憩」で「区間ごとに休む」（休憩画面で時間が止まる）か
@@ -95,19 +91,10 @@ README = f'''紀元前おじラン！（{today}）
   LICENSES.txt      同梱ライブラリのライセンス
   README.txt        このファイル
 
-■ オンライン対戦
-  ・タイトルの「オンライン対戦」から、クイック対戦（だれかと自動でマッチ）、部屋を作る（5文字のコードを友だちに教える）、
-    コードで参加、を選べます。足りない枠はコンピューターが入り、ちょっかいアイテムはほかのプレイヤーにも当たります。
-  ・オンライン対戦中はポーズできません（ESC でレースから退出）。休憩なしで、全員同じ時計で競います。
-  ・インターネット接続が必要です。サーバーの準備はいりません。部屋を作った人のブラウザが中継役になり、
-    ほかの人はそこへ直接つながります（相手探しだけ PeerJS の無料公開サーバーを使います）。
-  ・部屋を作った人がページを閉じると部屋はなくなります。同じ部屋の人どうしには、おたがいの IP アドレスが伝わります。
-  ・会社や学校のネットワークなど、つながらない環境もあります。
-
 
 Kigenzen Ojirun! (English)
 ================================================================
-  Open index.html in Chrome, Edge or Safari. No internet connection needed (except for online races).
+  Open index.html in Chrome, Edge or Safari. No internet connection needed.
   Switch between 日本語 and English at the top right of the title screen.
   An English edition (kigenzen-ojirun-en.zip) that always starts in English is also available.
 
@@ -120,7 +107,7 @@ Kigenzen Ojirun! (English)
   Breaks: on the title screen choose "Rest at each gate" (time stops at each bonfire) or "Run straight through".
 
   Nine eras, from 10,000 BC to the present: pick any of them under "Choose an era".
-  Modes: a 6-man race against five computer rivals, time attack against the ghost of your own best run, or an online race (up to 6 players).
+  Modes: a 6-man race against five computer rivals, or time attack against the ghost of your own best run.
   Bonfire gates stop the clock and refill your stamina. Embers feed the torch, sandals run for you for 10 s,
   meat refills stamina, a wig makes you invincible for 15 s, and sake slows you down.
   Everything you see and hear is made in code: no image files or recordings.
@@ -130,7 +117,7 @@ README_EN = f'''Kigenzen Ojirun! — English edition ({today})
 ================================================================
 
 HOW TO PLAY
-  Open index.html in Chrome, Edge, Firefox or Safari. No internet connection is needed except for online races.
+  Open index.html in Chrome, Edge, Firefox or Safari. No internet connection is needed.
   Best at 1280x720 or larger. Phones and tablets work in landscape (hold the RUN button to run).
   The game starts in English. Switch to 日本語 at the top right of the title screen if you like.
 
@@ -154,7 +141,6 @@ RULES
   - Nine eras, from the Stone Age (10,000 BC) to Reiwa (2026). Pick any era under "Choose an era"; after a clear,
     "Next era" takes you on. Each era has its own scenery, obstacles, drop and music.
   - Modes: a 6-man race against five computer rivals, or time attack against the see-through ghost of your best run.
-  - Online race: up to six players at once (see ONLINE below).
   - Courses: standard 2,400 m or short 600 m. Start with the short one.
   - Bonfire gates refill your stamina. On the title screen, pick "Rest at each gate" (the clock stops at each
     bonfire) or "Run straight through" (no stops all the way to the finish).
@@ -182,14 +168,6 @@ FILES
   three.min.js   three.js r128, the 3D library (MIT License)
   LICENSES.txt   licence of the bundled library
   README.txt     this file
-
-ONLINE
-  "Online race" on the title screen: Quick match (race whoever is around), Create a room (share the 5-letter code)
-  or join with a code. Computer rivals fill the empty places, and mischief items hit other players too.
-  Online races can't be paused (ESC leaves the race), have no bonfire breaks, and everyone runs on one clock.
-  Needs an internet connection, but no server: the player who opens a room hosts it in their browser and the others
-  connect to it directly (the free PeerJS broker only introduces them). The room closes when its host closes the page.
-  Players in a room can see each other's IP addresses, as with any WebRTC game. Some office or school networks block it.
 '''
 
 if os.path.exists(OUTDIR): shutil.rmtree(OUTDIR)
