@@ -21,6 +21,7 @@ python3 hud_overlap.py $JA | tail -1
 python3 hint_pos.py $JA | tail -1
 python3 touch_hold.py $JA | tail -1
 python3 net_test.py $H $ROOT/server | tail -1
+python3 p2p_test.py $H $ROOT/server | tail -1
 python3 online_fit.py $JA $ROOT/server $OUT | tail -6
 python3 lan_check.py $JA $ROOT/server
 (cd $ROOT/server && node test/room-test.mjs | tail -1 && node test/worker-test.mjs | tail -1)
