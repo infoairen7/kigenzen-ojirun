@@ -31,7 +31,7 @@ def page(html, lang):
     head = ('<!doctype html>\n<html lang="%s">\n<head>\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
             '<meta name="description" content="%s">\n'
-            '<!-- オンライン対戦のサーバー / online race server: put your server URL between the quotes, e.g. https://kigenzen-ojirun-online.NAME.workers.dev -->\n'
+            '<!-- オンライン対戦の中継サーバー（任意。空欄ならブラウザどうしで直接つながります） / optional online relay server (empty = browser to browser), e.g. https://kigenzen-ojirun-online.NAME.workers.dev -->\n'
             "<script>window.TORCH_SERVER = window.TORCH_SERVER || '%s';</script>\n") % (lang, desc, SERVER)
     if lang == 'en':
         head += "<script>window.TORCH_DEFAULT_LANG = 'en';</script>\n"
@@ -99,8 +99,10 @@ README = f'''紀元前おじラン！（{today}）
   ・タイトルの「オンライン対戦」から、クイック対戦（だれかと自動でマッチ）、部屋を作る（5文字のコードを友だちに教える）、
     コードで参加、を選べます。足りない枠はコンピューターが入り、ちょっかいアイテムはほかのプレイヤーにも当たります。
   ・オンライン対戦中はポーズできません（ESC でレースから退出）。休憩なしで、全員同じ時計で競います。
-  ・インターネット接続と、対戦用サーバーが必要です。サーバーが未設定のコピーでは、画面にその旨が表示されます。
-    （サーバーの立て方は同梱外の「オンライン対戦サーバー」パッケージを参照）
+  ・インターネット接続が必要です。サーバーの準備はいりません。部屋を作った人のブラウザが中継役になり、
+    ほかの人はそこへ直接つながります（相手探しだけ PeerJS の無料公開サーバーを使います）。
+  ・部屋を作った人がページを閉じると部屋はなくなります。同じ部屋の人どうしには、おたがいの IP アドレスが伝わります。
+  ・会社や学校のネットワークなど、つながらない環境もあります。
 
 
 Kigenzen Ojirun! (English)
@@ -185,7 +187,9 @@ ONLINE
   "Online race" on the title screen: Quick match (race whoever is around), Create a room (share the 5-letter code)
   or join with a code. Computer rivals fill the empty places, and mischief items hit other players too.
   Online races can't be paused (ESC leaves the race), have no bonfire breaks, and everyone runs on one clock.
-  Needs an internet connection and a race server; a copy without one says so on the online screen.
+  Needs an internet connection, but no server: the player who opens a room hosts it in their browser and the others
+  connect to it directly (the free PeerJS broker only introduces them). The room closes when its host closes the page.
+  Players in a room can see each other's IP addresses, as with any WebRTC game. Some office or school networks block it.
 '''
 
 if os.path.exists(OUTDIR): shutil.rmtree(OUTDIR)
