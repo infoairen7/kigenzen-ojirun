@@ -528,7 +528,7 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
   <section class="screen" id="scr-online" hidden>
     <div class="panel online-panel">
       <div class="panel-head"><p class="eyebrow">ONLINE RACE</p><h2>オンライン対戦</h2><p class="muted" style="margin:0">最大6人で同時に走ります。足りない枠はコンピューターが入ります。ちょっかいアイテムはほかのプレイヤーにも当たります。</p></div>
-      <p class="on-note muted" id="on-noserver" hidden>このゲームにはオンライン対戦のサーバーがまだ設定されていません。下の「サーバー設定」にURLを入れると接続できます。</p>
+      <p class="on-note muted" id="on-noserver" hidden>サーバーの準備はいりません。部屋を作った人のブラウザが中継役になります。</p>
       <div class="on-join" id="on-join">
         <label class="on-field"><span>なまえ</span><input id="on-name" maxlength="12" autocomplete="off" spellcheck="false"></label>
         <div class="on-actions">
@@ -547,7 +547,7 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
       <p class="on-status" id="on-status" role="status" hidden></p>
       <details class="on-adv" id="on-adv"><summary>サーバー設定</summary>
         <label class="on-field"><span>サーバーURL</span><input id="on-server" autocomplete="off" spellcheck="false"></label>
-        <small class="muted">ふだんは変更不要です。自分で立てたサーバーにつなぐときだけ入力します（空欄でゲームの既定に戻ります）。</small></details>
+        <small class="muted">空欄のままで遊べます（ブラウザどうしで直接つながります）。自分で立てたサーバーを使うときだけ URL を入れます。</small></details>
       <div class="row-actions">
         <button class="btn primary mini" id="on-start" hidden>スタート</button>
         <button class="btn mini" id="on-leave" hidden>部屋を出る</button>
@@ -1397,10 +1397,10 @@ const EN = {
   '減速': 'SLOW', 'ポーズ': 'Pause', 'BC10,000 — 1万年を駆けぬけろ': '10,000 BC — run through ten thousand years', '1万年以上、まだ走ってます。': 'Still running after 10,000 years.',
   'メインメニュー': 'Main menu', '走りはじめる': 'Start running', '01 原始時代 ・ ERA RUN': '01 Stone Age · ERA RUN', '次の時代へ': 'Next era', 'オンライン対戦': 'Online race', '最大6人で同時に走る': 'Up to 6 players at once',
   '最大6人で同時に走ります。足りない枠はコンピューターが入ります。ちょっかいアイテムはほかのプレイヤーにも当たります。': 'Up to six players race at the same time. Computer rivals fill any empty places. Mischief items hit other players too.',
-  'このゲームにはオンライン対戦のサーバーがまだ設定されていません。下の「サーバー設定」にURLを入れると接続できます。': 'No online server is set up for this copy of the game yet. Enter one under “Server settings” below to connect.',
+  'サーバーの準備はいりません。部屋を作った人のブラウザが中継役になります。': 'No server needed: the player who opens a room hosts it in their own browser.',
   'なまえ': 'Name', 'クイック対戦': 'Quick match', 'だれかと自動でマッチ': 'Race whoever is around', '部屋を作る': 'Create a room', 'コードを友だちに教える': 'Share the code with friends', '参加': 'Join',
   '部屋コード': 'Room code', 'コードをコピー': 'Copy code', '時代': 'Era', 'サーバー設定': 'Server settings', 'サーバーURL': 'Server URL',
-  'ふだんは変更不要です。自分で立てたサーバーにつなぐときだけ入力します（空欄でゲームの既定に戻ります）。': 'Leave this alone unless you run your own server (empty = the game’s default).',
+  '空欄のままで遊べます（ブラウザどうしで直接つながります）。自分で立てたサーバーを使うときだけ URL を入れます。': 'Leave this empty to connect browser to browser. Only enter a URL to use a server you run yourself.',
   'スタート': 'Start', '部屋を出る': 'Leave room', '部屋に戻る': 'Back to the room', '次のレースへ': 'Next race', '02 古代文明': '02 Ancient Civilizations', '時代を選ぶ': 'Choose an era',
   'おじさんアルバム': 'Ojisan album', '設定': 'Settings', 'モード': 'Mode', '6人レース': '6-man race', 'タイムアタック': 'Time attack', 'コース': 'Course',
   'コースの長さ': 'Course length', '休憩': 'Breaks', '焚き火での休憩': 'Bonfire breaks', '区間ごとに休む': 'Rest at each gate', '休まず走る': 'Run straight through', '標準 2,400 m': 'Standard 2,400 m', '短縮 600 m': 'Short 600 m', '言語': 'Language',
@@ -4781,7 +4781,11 @@ const NET_ERR = {
   started: ['その部屋はレース中です。終わってから参加してください。', 'That room is racing right now. Join when the race is over.'],
   busy: ['部屋がいっぱいです。少し待ってからもう一度お試しください。', 'All rooms are busy. Try again in a moment.'],
   closed: ['サーバーに接続できませんでした。', 'Could not reach the server.'],
-  lost: ['サーバーとの接続が切れました。', 'Lost the connection to the server.']
+  lost: ['サーバーとの接続が切れました。', 'Lost the connection to the server.'],
+  broker: ['対戦相手を探す窓口（PeerJS の無料サーバー）につながりませんでした。インターネット接続を確かめて、もう一度お試しください。', 'Could not reach the matchmaking service (the free PeerJS server). Check your internet connection and try again.'],
+  nolink: ['相手のブラウザとつながりませんでした。会社や学校のネットワークでは止められていることがあります。別の Wi-Fi やスマホの回線でお試しください。', 'Could not connect to the other browser. Some office or school networks block this; try another Wi-Fi or mobile data.'],
+  hostgone: ['部屋を作った人との接続が切れました。', 'Lost the connection to the player who opened the room.'],
+  nortc: ['このブラウザはオンライン対戦（WebRTC）に対応していません。最新の Chrome・Edge・Firefox・Safari でお試しください。', 'This browser cannot do online races (no WebRTC). Try a current Chrome, Edge, Firefox or Safari.']
 };
 function netErrText(code) {
   const e = NET_ERR[code] || NET_ERR.closed; let t = LL(e[0], e[1]);
@@ -4789,41 +4793,218 @@ function netErrText(code) {
   return t;
 }
 
-/* ---------- connecting ---------- */
-function netOpen(code, extra) {
+/* ---------- browser-to-browser rooms (the default: no server of our own) ----------
+   With no server URL set, the player who opens a room runs the room itself (ROOMCORE below: the very same code
+   as the Cloudflare server) inside their own game, and everyone else connects straight to that browser over a
+   WebRTC data channel. To find each other the games use PeerJS's free public broker (0.peerjs.com), which only
+   passes along the few messages that set up a connection: room ABCDE is broker id "kigenzen-ojirun-1-abcde".
+   The race itself then goes browser to browser, through the host. Tests point TORCH_PEER at a local broker. */
+/*ROOM_CORE*/
+const P2P_NS = 'kigenzen-ojirun-1-';
+const p2pOK = () => typeof RTCPeerConnection === 'function' && typeof WebSocket === 'function';
+const p2pTok = () => Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 8);
+function p2pCfg() {
+  const c = Object.assign({ host: '0.peerjs.com', port: 443, path: '/', key: 'peerjs', secure: true }, window.TORCH_PEER || {});
+  let p = String(c.path || '/'); if (p[0] !== '/') p = '/' + p; if (p[p.length - 1] !== '/') p += '/'; c.path = p;
+  // STUN only (finds each player's public address). There is no free relay (TURN), so a few strict networks cannot connect;
+  // a TURN server of your own can go in window.TORCH_ICE.
+  c.ice = window.TORCH_ICE || [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] }];
+  return c;
+}
+/* The broker (PeerServer protocol): a WebSocket per game; OPEN / ID-TAKEN on arrival, then OFFER / ANSWER / CANDIDATE
+   passed to "dst", EXPIRE when "dst" never showed up. */
+function p2pBroker(id) {
   return new Promise((resolve, reject) => {
-    const base = netServer(); if (!base) return reject('noserver');
-    const s = G.save.settings;
-    const url = base + '/ws?room=' + code + '&ver=' + NET_PROTO + '&name=' + encodeURIComponent(netName()) + '&era=' + (s.era | 0) + '&short=' + (s.shortCourse ? 1 : 0) + (extra || '');
-    let ws; try { ws = new WebSocket(url); } catch (e) { return reject('closed'); }
+    const c = p2pCfg(), url = (c.secure ? 'wss://' : 'ws://') + c.host + ':' + c.port + c.path + 'peerjs?key=' + encodeURIComponent(c.key) + '&id=' + encodeURIComponent(id) + '&token=' + p2pTok() + '&version=1.5.4';
+    const B = { id, on: null, ws: null, dead: false, tries: 0 };
+    let first = true;
+    const settle = (ok, why) => { if (!first) return; first = false; clearTimeout(to); if (ok) resolve(B); else { B.close(); reject(why); } };
+    const to = setTimeout(() => settle(false, 'broker'), 10000);
+    const hb = setInterval(() => { if (B.ws && B.ws.readyState === 1) { try { B.ws.send('{"type":"HEARTBEAT"}'); } catch (e) {} } }, 5000);
+    B.send = (type, dst, payload) => { if (B.ws && B.ws.readyState === 1) { try { B.ws.send(JSON.stringify({ type, dst, payload })); } catch (e) {} } };
+    B.close = () => { if (B.dead) return; B.dead = true; clearInterval(hb); const ws = B.ws; B.ws = null; if (ws) { try { ws.close(); } catch (e) {} } };
+    const connect = () => {
+      let ws = null; try { ws = new WebSocket(url); } catch (e) {}
+      if (!ws) { settle(false, 'broker'); return; }
+      B.ws = ws;
+      ws.onmessage = (ev) => {
+        let m; try { m = JSON.parse(ev.data); } catch (e) { return; }
+        if (!m || typeof m.type !== 'string') return;
+        if (m.type === 'OPEN') { B.tries = 0; settle(true); return; }
+        if (m.type === 'ID-TAKEN' || m.type === 'ERROR' || m.type === 'INVALID-KEY') { if (first) settle(false, m.type === 'ID-TAKEN' ? 'taken' : 'broker'); else B.close(); return; }
+        if (B.on) B.on(m);
+      };
+      ws.onerror = () => {};
+      ws.onclose = () => {
+        if (B.ws !== ws || B.dead) return; B.ws = null;
+        if (first) { settle(false, 'broker'); return; }
+        // the broker dropped us: links already open keep going; come back so new players can still find this room
+        if (++B.tries <= 30) setTimeout(() => { if (!B.dead) connect(); }, Math.min(10000, 1000 * B.tries));
+      };
+    };
+    connect();
+  });
+}
+/* One WebRTC data channel to another game. offer = the caller's OFFER payload when they called us. */
+function p2pLink(B, peer, cid, offer) {
+  const L = { peer, cid, open: false, closed: false, remote: false, cands: [], onopen: null, onmessage: null, onclose: null, dc: null };
+  let pc = null; try { pc = new RTCPeerConnection({ iceServers: p2pCfg().ice }); } catch (e) {}
+  L.send = (s) => { if (L.open && L.dc && L.dc.readyState === 'open') { try { L.dc.send(s); } catch (e) {} } };
+  L.close = () => {
+    if (L.closed) return; L.closed = true; L.open = false;
+    try { if (L.dc) L.dc.close(); } catch (e) {} try { if (pc) pc.close(); } catch (e) {}
+    if (L.onclose) L.onclose();
+  };
+  if (!pc) { setTimeout(L.close, 0); return L; }
+  const sig = (type, payload) => B.send(type, peer, Object.assign({ type: 'data', connectionId: cid }, payload));
+  const flush = async () => { for (const c of L.cands.splice(0)) { try { await pc.addIceCandidate(c); } catch (e) {} } };
+  pc.onicecandidate = (e) => { if (e.candidate && e.candidate.candidate) sig('CANDIDATE', { candidate: e.candidate.toJSON ? e.candidate.toJSON() : e.candidate }); };
+  pc.onconnectionstatechange = () => { if (pc.connectionState === 'failed' || pc.connectionState === 'closed') L.close(); };
+  const useDC = (dc) => {
+    L.dc = dc;
+    dc.onopen = () => { if (L.closed || L.open) return; L.open = true; if (L.onopen) L.onopen(); };
+    dc.onmessage = (e) => { if (typeof e.data === 'string' && L.onmessage) L.onmessage(e.data); };
+    dc.onclose = () => L.close();
+  };
+  L.signal = async (m) => {   // ANSWER / CANDIDATE for this link, through the broker
+    try {
+      const p = m.payload || {};
+      if (m.type === 'ANSWER' && !L.remote && p.sdp) { await pc.setRemoteDescription(p.sdp); L.remote = true; await flush(); }
+      else if (m.type === 'CANDIDATE' && p.candidate) { if (L.remote) { try { await pc.addIceCandidate(p.candidate); } catch (e) {} } else L.cands.push(p.candidate); }
+    } catch (e) { L.close(); }
+  };
+  (async () => {
+    try {
+      if (offer) {
+        pc.ondatachannel = (e) => useDC(e.channel);
+        await pc.setRemoteDescription(offer.sdp); L.remote = true; await flush();
+        const a = await pc.createAnswer(); await pc.setLocalDescription(a);
+        sig('ANSWER', { sdp: { type: a.type, sdp: a.sdp } });
+      } else {
+        useDC(pc.createDataChannel('ojirun', { ordered: true }));
+        const o = await pc.createOffer(); await pc.setLocalDescription(o);
+        sig('OFFER', { sdp: { type: o.type, sdp: o.sdp }, label: 'ojirun', reliable: true, serialization: 'raw', metadata: null });
+      }
+    } catch (e) { L.close(); }
+  })();
+  return L;
+}
+/* A stand-in for the WebSocket that netOpen uses: the same messages, browser to browser. */
+function p2pSocket(code, q) {
+  const S = { p2p: true, readyState: 0, onmessage: null, onclose: null, onerror: null, why: '', impl: null, bye: null, watch: 0, last: 0, sent: 0, isHost: false };
+  S.deliver = (d) => { if (S.readyState === 1 && S.onmessage) S.onmessage({ data: d }); };
+  S.shut = (why) => {
+    if (S.readyState === 3) return;
+    S.readyState = 3; if (why && !S.why) S.why = why; clearInterval(S.watch);
+    if (S.bye) { try { S.bye(); } catch (e) {} }
+    if (S.onclose) S.onclose({ code: 1000, reason: S.why });
+  };
+  S.fail = (c) => { if (S.readyState === 3) return; S.why = c; if (S.onmessage) S.onmessage({ data: JSON.stringify({ t: 'err', code: c }) }); S.shut(c); };
+  S.send = (d) => { if (S.readyState === 1 && S.impl) { S.sent = performance.now(); S.impl(String(d)); } };
+  S.close = () => S.shut('bye');
+  const id = P2P_NS + code.toLowerCase();
+  if (q.create === '1') p2pHost(S, id, code, q, () => S.fail('taken'));
+  else if (q.join === '1') p2pGuest(S, id, q);
+  else p2pHost(S, id, code, q, () => p2pGuest(S, id, q));   // quick match: open the room if nobody has it, otherwise join it
+  return S;
+}
+function p2pHost(S, id, code, q, onTaken) {
+  p2pBroker(id).then((B) => {
+    if (S.readyState === 3) { B.close(); return; }
+    const io = { now: () => Date.now(), setTimer: (ms, fn) => setTimeout(fn, ms), clearTimer: (h) => clearTimeout(h) };
+    // a player whose browser goes quiet for 15 s is dropped (a closed tab does not always say goodbye)
+    const room = new ROOMCORE.RoomCore(code, io, Object.assign({ idleMs: 15000, sweepMs: 3000 }, window.TORCH_ROOM_OPTS)), links = new Map();
+    S.readyState = 1; S.isHost = true; S.room = room; S.links = links;
+    // this game's own player talks to the room like everyone else, just without the network
+    const me = room.join({ send: (s) => queueMicrotask(() => S.deliver(s)), close: () => queueMicrotask(() => S.shut('closed')) }, Object.assign({}, q, { join: '' }));
+    if (!me) { B.close(); return; }
+    Object.defineProperty(me, 'last', { get: () => io.now(), set() {} });   // ...and is never dropped for being quiet (a hidden tab)
+    S.impl = (s) => room.message(me, s);
+    S.bye = () => { room.leave(me); for (const L of Array.from(links.values())) L.close(); links.clear(); B.close(); };
+    B.on = (m) => {
+      const p = m.payload || {}, cid = String(p.connectionId || '');
+      if (m.type === 'OFFER') {   // someone wants in
+        if (!cid || links.has(cid) || links.size >= 16 || !p.sdp) return;
+        const L = p2pLink(B, m.src, cid, p); links.set(cid, L);
+        let who = null;
+        const sock = { send: (s) => L.send(s), close: () => setTimeout(L.close, 400) };
+        const hello = setTimeout(() => { if (!who) L.close(); }, 25000);
+        L.onmessage = (s) => {
+          if (who) { room.message(who, s); return; }
+          let h; try { h = JSON.parse(s); } catch (e) { return; }
+          if (h && h.t === 'hello' && !L.joined) { L.joined = true; clearTimeout(hello); who = room.join(sock, Object.assign({}, h.q && typeof h.q === 'object' ? h.q : {}, { create: '' })); }
+        };
+        L.onclose = () => { clearTimeout(hello); links.delete(cid); if (who) { const w = who; who = null; room.leave(w); } };
+      } else if (m.type === 'LEAVE') { for (const L of Array.from(links.values())) if (L.peer === m.src) L.close(); }
+      else { const L = links.get(cid); if (L && L.peer === m.src) L.signal(m); }
+    };
+  }, (why) => { if (S.readyState === 3) return; if (why === 'taken') onTaken(); else S.fail('broker'); });
+}
+function p2pGuest(S, id, q) {
+  p2pBroker(P2P_NS + 'g' + p2pTok()).then((B) => {
+    if (S.readyState === 3) { B.close(); return; }
+    const cid = 'dc_' + p2pTok(), L = p2pLink(B, id, cid, null);
+    S.bye = () => { L.onclose = null; L.close(); B.close(); };
+    B.on = (m) => {
+      if (m.src !== id) return;
+      if (m.type === 'EXPIRE') { if (!L.open) S.fail('noroom'); return; }   // nobody has that room
+      if (m.type === 'LEAVE') { L.close(); return; }
+      if (m.payload && m.payload.connectionId === cid) L.signal(m);
+    };
+    L.onopen = () => {
+      if (S.readyState !== 0) return;
+      S.readyState = 1; S.impl = (s) => L.send(s); S.last = S.sent = performance.now();
+      L.send(JSON.stringify({ t: 'hello', q: Object.assign({}, q, { create: '' }) }));
+      setTimeout(() => B.close(), 5000);   // connected: the broker is not needed any more
+      S.watch = setInterval(() => {   // keep the link warm, and notice when the host's browser has gone quiet
+        const now = performance.now();
+        if (now - S.sent > 4000) S.send(JSON.stringify({ t: 'ping', c: now }));
+        if (now - S.last > 10000) S.shut('hostgone');
+      }, 2000);
+    };
+    L.onmessage = (s) => { S.last = performance.now(); S.deliver(s); };
+    L.onclose = () => { if (S.readyState === 0) S.fail('nolink'); else S.shut('hostgone'); };
+  }, () => S.fail('broker'));
+}
+
+/* ---------- connecting ---------- */
+function netOpen(code, q) {
+  return new Promise((resolve, reject) => {
+    const s = G.save.settings, base = netServer();
+    q = Object.assign({ ver: String(NET_PROTO), name: netName(), era: String(s.era | 0), short: s.shortCourse ? '1' : '0' }, q || {});
+    let ws;
+    if (base) { try { ws = new WebSocket(base + '/ws?room=' + code + '&' + Object.keys(q).map(k => k + '=' + encodeURIComponent(q[k])).join('&')); } catch (e) { return reject('closed'); } }
+    else if (!p2pOK()) return reject('nortc');
+    else ws = p2pSocket(code, q);
     let settled = false;
-    const to = setTimeout(() => { if (!settled) { settled = true; try { ws.close(); } catch (e) {} reject('closed'); } }, 9000);
+    const to = setTimeout(() => { if (!settled) { settled = true; try { ws.close(); } catch (e) {} reject(base ? 'closed' : 'nolink'); } }, base ? 9000 : 30000);
     ws.onmessage = (ev) => {
       let m; try { m = JSON.parse(ev.data); } catch (e) { return; }
       if (!settled) {
-        if (m.t === 'err') { settled = true; clearTimeout(to); reject(m.code); return; }
+        if (m.t === 'err') { settled = true; clearTimeout(to); reject(m.code); if (ws.p2p) setTimeout(() => ws.close(), 600); return; }
         if (m.t === 'welcome') { settled = true; clearTimeout(to); if (NET.ws && NET.ws !== ws) { try { NET.ws.close(); } catch (e) {} } NET.ws = ws; netWelcome(m); resolve(m); return; }
       }
       if (NET.ws === ws) netMsg(m);
     };
     ws.onerror = () => {};
-    ws.onclose = () => { if (!settled) { settled = true; clearTimeout(to); reject('closed'); return; } if (NET.ws === ws) netClosed(); };
+    ws.onclose = () => { if (!settled) { settled = true; clearTimeout(to); reject(ws.why || 'closed'); return; } if (NET.ws === ws) netClosed(ws.why); };
   });
 }
 async function netQuick() {
+  const p2p = !netServer();
   for (let i = 1; i <= 12; i++) {
-    try { await netOpen('QUICK' + i, ''); return; } catch (e) { if (e === 'started' || e === 'full') continue; throw e; }
+    try { await netOpen('QUICK' + i, {}); return; } catch (e) { if (e === 'started' || e === 'full' || (p2p && e === 'noroom')) continue; throw e; }
   }
   throw 'busy';
 }
 async function netCreate() {
   for (let k = 0; k < 5; k++) {
     let code = ''; for (let i = 0; i < 5; i++) code += NET_ALPHA[Math.floor(Math.random() * NET_ALPHA.length)];
-    try { await netOpen(code, '&create=1'); return; } catch (e) { if (e !== 'taken') throw e; }
+    try { await netOpen(code, { create: '1' }); return; } catch (e) { if (e !== 'taken') throw e; }
   }
   throw 'busy';
 }
-async function netJoinCode(code) { await netOpen(code, '&join=1'); }
+async function netJoinCode(code) { await netOpen(code, { join: '1' }); }
 function netWelcome(m) {
   Object.assign(NET, { on: true, id: m.id, code: m.code, pub: !!m.pub, offset: m.now - performance.now(), rtt: 9999, phase: 'lobby', status: '', pingT: 0, race: null, players: [], host: null });
   for (let i = 0; i < 4; i++) setTimeout(() => netSend({ t: 'ping', c: performance.now() }), 120 + i * 220);   // a few quick pings settle the clock
@@ -4833,7 +5014,7 @@ function netLeave() {
   if (ws) { try { ws.send(JSON.stringify({ t: 'leave' })); } catch (e) {} try { ws.close(1000, 'bye'); } catch (e) {} }
   if (G.run && G.run.online) G.run.online = false;
 }
-function netClosed() {
+function netClosed(why) {
   NET.ws = null; NET.on = false; NET.phase = 'off';
   const R = NET.race;
   if (R && !R.over && G.run && G.run.online) {   // carry on against the computer: take over the rivals, drop the other players
@@ -4842,7 +5023,7 @@ function netClosed() {
     netBecomeHost();
     toast(LL('通信が切れました。このままコンピューターと走れます。', 'Connection lost. You can keep racing the computer rivals.'));
   } else NET.race = null;
-  NET.status = netErrText('lost');
+  NET.status = netErrText(why === 'hostgone' ? 'hostgone' : 'lost');
   renderOnline();
 }
 
@@ -5038,9 +5219,14 @@ function renderOnline() {
   $('on-join').hidden = inRoom; $('on-room').hidden = !inRoom; $('on-leave').hidden = !inRoom; $('on-adv').hidden = inRoom;
   $('on-start').hidden = !(inRoom && host && lobby);
   $('on-status').textContent = NET.status || ''; $('on-status').hidden = !NET.status;
-  const srv = netServer();
-  $('on-noserver').hidden = !!srv || inRoom;
-  ['on-quick', 'on-create', 'on-joinbtn'].forEach(id => $(id).disabled = !srv || !!NET.busy);
+  const srv = netServer(), can = !!srv || p2pOK(), hint = $('on-noserver');
+  let ht = '';
+  if (!can) ht = netErrText('nortc');
+  else if (!srv && !inRoom) ht = LL('サーバーの準備はいりません。部屋を作った人のブラウザが中継役になります。', 'No server needed: the player who opens a room hosts it in their own browser.');
+  else if (!srv && inRoom && NET.ws && NET.ws.isHost) ht = LL('あなたのブラウザがこの部屋の中継役です。レースが終わるまでこのページを開いたままにしてください。', 'Your browser is hosting this room. Keep this page open until the race is over.');
+  if (hint.textContent !== ht) hint.textContent = ht;
+  hint.hidden = !ht;
+  ['on-quick', 'on-create', 'on-joinbtn'].forEach(id => $(id).disabled = !can || !!NET.busy);
   if (!inRoom) {
     if (document.activeElement !== $('on-name')) $('on-name').value = netName();
     if (document.activeElement !== $('on-server')) $('on-server').value = G.save.settings.server || '';
@@ -5097,6 +5283,7 @@ click('on-short', () => { if (NET.host === NET.id) netSend({ t: 'cfg', era: NET.
 $('on-era').addEventListener('change', () => { if (NET.host === NET.id) netSend({ t: 'cfg', era: +$('on-era').value, short: !!NET.cfg.short }); });
 $('on-name').addEventListener('change', () => { const v = $('on-name').value.replace(/[<>&"'`\\]/g, '').trim().slice(0, 12); if (v) { G.save.settings.nick = v; writeSave(); } $('on-name').value = netName(); });
 $('on-server').addEventListener('change', () => { G.save.settings.server = $('on-server').value.trim(); writeSave(); NET.status = ''; renderOnline(); });
+addEventListener('pagehide', () => { if (NET.ws && NET.ws.p2p) netLeave(); });   // closing the page: tell the room (or close it) right away
 $('on-code').addEventListener('input', () => { const el = $('on-code'), v = el.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 5); if (el.value !== v) el.value = v; });
 click('r-lobby', resultGuard(() => {
   Snd.play('ui');
@@ -5115,7 +5302,7 @@ async function start() {
   G.last = performance.now();
   requestAnimationFrame(frame);
 }
-window.__torch = { G, T, simulate: T.simulate, startRun, retryRun, goTitle, showResult, Input, ARTX, Snd, wearWig, dropWig, snapshotOjisan, NET, netServer, netQuick, netCreate, netJoinCode, netLeave, openOnline, standings };
+window.__torch = { G, T, simulate: T.simulate, startRun, retryRun, goTitle, showResult, Input, ARTX, Snd, wearWig, dropWig, snapshotOjisan, NET, netServer, netQuick, netCreate, netJoinCode, netLeave, openOnline, standings, p2pOK, netMode: () => netServer() ? 'server' : 'p2p' };
 if (window.claude && window.claude.hot && window.claude.hot.ready) window.claude.hot.ready(start); else start();
 })();
 </script>
