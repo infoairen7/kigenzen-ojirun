@@ -1,5 +1,7 @@
 # 紀元前おじラン！ オンライン対戦サーバー
 
+**このサーバーはなくても対戦できます。** ゲームは、サーバーの URL が設定されていなければブラウザどうしで直接つながります（部屋を作った人のブラウザが部屋を進行し、相手探しには PeerJS の無料公開サーバーを使います）。このフォルダは、自分で中継サーバーを立てたい人向けです。`src/room-core.js` はゲームにも組み込まれていて、ブラウザどうしの対戦でも同じ部屋の進行を使います。
+
 ゲームの「オンライン対戦」で使う小さな中継サーバーです。Cloudflare の無料プラン（Workers ＋ Durable Objects）で動きます。
 同じ部屋の最大6人のあいだで、おじさんの位置・ちょっかいアイテム・ゴールタイムを中継します。レースの計算はそれぞれのゲームが行い、サーバーは中継とスタートの合図だけを担当します。
 
@@ -44,7 +46,7 @@ itch.io に上げる場合は、`index.html`・`three.min.js`・`LICENSES.txt`�
 ## そのほか
 
 - **接続元を itch.io に限る（任意）**：`wrangler.toml` の `ALLOWED_ORIGINS = "*.itch.zone"` にして `npx wrangler deploy`。設定すると、パソコンで index.html を直接開いた版からは接続できなくなります。
-- **同じ Wi-Fi で遊ぶ（Cloudflare なし）**：`node dev/local-server.mjs --game ゲームのindex.htmlの場所` を実行し、同じネットワークの人は `http://このパソコンのIPアドレス:8787/` を開きます。
+- **同じ Wi-Fi で遊ぶ（Cloudflare なし）**：`node dev/local-server.mjs --game ゲームのindex.htmlの場所` を実行し、同じネットワークの人は `http://このパソコンのIPアドレス:8787/` を開きます。`--p2p` を付けると、ブラウザどうしの対戦をインターネットなしで試せます（このパソコンが PeerJS の窓口の代わりになります）。
 - **更新**：ファイルを差し替えて `npx wrangler deploy`。**停止**：`npx wrangler delete`、または Cloudflare のダッシュボードで Worker を削除。
 - **テスト**：`npm test`（部屋の動きと Worker のつなぎ込みを確認します。Node 22 以上）。
 
@@ -59,7 +61,7 @@ itch.io に上げる場合は、`index.html`・`three.min.js`・`LICENSES.txt`�
 
 ## English summary
 
-A small relay server for the game's online races, for Cloudflare Workers + Durable Objects (free plan).
+Optional: the game races browser to browser when no server URL is set (WebRTC, with the free PeerJS broker for matchmaking; `src/room-core.js` runs in the host's browser). This is a small relay server for those who want one, for Cloudflare Workers + Durable Objects (free plan).
 One Durable Object per room code; up to 6 players; the server relays positions, items and finish times and starts races on a shared clock.
 
 ```
