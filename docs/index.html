@@ -3,9 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="たいまつを掲げたおじさん6人が紀元前から令和まで9つの時代を走る、ボタンひとつのドタバタ3Dレース。オンラインで最大6人対戦。">
-<!-- オンライン対戦の中継サーバー（任意。空欄ならブラウザどうしで直接つながります） / optional online relay server (empty = browser to browser), e.g. https://kigenzen-ojirun-online.NAME.workers.dev -->
-<script>window.TORCH_SERVER = window.TORCH_SERVER || '';</script>
+<meta name="description" content="たいまつを掲げたおじさん6人が紀元前から令和まで9つの時代を走る、ボタンひとつのドタバタ3Dレース。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="紀元前おじラン！">
+<meta property="og:title" content="紀元前おじラン！">
+<meta property="og:description" content="たいまつを掲げたおじさん6人が、紀元前1万年から令和まで9つの時代を駆けぬける、ボタンひとつのドタバタ3Dレース。ブラウザで無料、インストール不要。">
+<meta property="og:url" content="https://infoairen7.github.io/kigenzen-ojirun/">
+<meta property="og:image" content="https://infoairen7.github.io/kigenzen-ojirun/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="紀元前おじラン！ たいまつを掲げて走るおじさんたち">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="紀元前おじラン！">
+<meta name="twitter:description" content="たいまつを掲げたおじさん6人が、紀元前1万年から令和まで9つの時代を駆けぬける、ボタンひとつのドタバタ3Dレース。ブラウザで無料、インストール不要。">
+<meta name="twitter:image" content="https://infoairen7.github.io/kigenzen-ojirun/ogp.jpg">
 <title>紀元前おじラン！</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -272,62 +283,6 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
 .card .c-state{font-size:12px;color:var(--muted)}
 .card.got .c-state{color:var(--gold)}
 .legend{border:1px solid rgba(255,195,90,.35);background:rgba(255,195,90,.07);border-radius:10px;padding:12px 16px;display:grid;gap:2px}
-.menu #btn-online{border-color:rgba(255,195,90,.55);background:linear-gradient(rgba(255,195,90,.12),rgba(255,195,90,.12)),var(--panel-raised)}
-.menu #btn-online small{color:var(--gold);opacity:1}
-.online-panel{width:min(760px,100%)}
-.on-join{display:grid;gap:14px}
-.on-field{display:grid;gap:6px;font-size:14px;color:var(--muted);font-weight:700}
-.on-field input,.on-code input,.on-cfg select{appearance:none;background:var(--night);border:1px solid var(--line);border-radius:8px;color:var(--cream);font:inherit;font-size:17px;font-weight:700;padding:.55em .8em;min-width:0}
-.on-field input:focus,.on-code input:focus,.on-cfg select:focus{outline:2px solid var(--flame);outline-offset:1px}
-.on-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:stretch}
-.on-actions .on-code{grid-column:1/-1}
-.on-code{display:flex;gap:8px;min-width:0}
-.on-code input{flex:1;text-transform:uppercase;letter-spacing:.18em;font-family:var(--font-num);width:100%}
-.on-code input::placeholder{letter-spacing:.02em;text-transform:none;font-family:inherit;font-weight:500;font-size:15px}
-.on-code .btn{flex:none;align-items:center;justify-content:center;min-width:6em}
-.on-room{display:grid;gap:14px}
-.on-roomhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.on-roomhead b{display:block;font-family:var(--font-num);font-size:32px;letter-spacing:.14em;color:var(--gold);line-height:1.1}
-.on-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.on-list li{display:flex;align-items:center;gap:10px;background:var(--panel-raised);border:1px solid var(--line);border-radius:9px;padding:9px 12px;min-width:0;font-size:15px}
-.on-list li b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.on-list li.me{border-color:var(--flame)}
-.on-list li.cpu{color:var(--muted);border-style:dashed}
-.on-list li small{margin-left:auto;font-size:13px;opacity:.8}
-.on-dot{width:12px;height:12px;border-radius:50%;background:var(--cream);flex:none}
-.on-tag{font-size:12px;font-weight:700;border-radius:999px;padding:.15em .6em;background:rgba(255,195,90,.16);color:var(--gold);margin-left:auto}
-.on-tag.me{background:rgba(255,140,60,.18);color:var(--flame);margin-left:0}
-.on-tag+.on-tag{margin-left:6px}
-.on-cfg{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted);font-weight:700}
-.on-cfg label{display:flex;align-items:center;gap:8px}
-.on-status{margin:0;color:var(--gold);font-weight:700}
-.on-note{margin:0;font-size:14px}
-.on-adv summary{cursor:pointer;color:var(--muted);font-size:14px}
-.on-adv[open]{display:grid;gap:8px}
-.r-net{margin:0;color:var(--gold);font-weight:700}
-@media (max-width:720px){ .on-actions{grid-template-columns:minmax(0,1fr)} .on-list{grid-template-columns:minmax(0,1fr)} }
-@media (max-height:620px){
-  .online-panel{gap:10px;padding:14px 20px}
-  .online-panel .panel-head p.muted{display:none}
-  .online-panel h2{font-size:22px}
-  .on-roomhead b{font-size:24px}
-  .on-list{gap:6px}
-  .on-list li{padding:5px 10px;font-size:14px}
-  .on-field{gap:3px}
-  .on-field input,.on-code input,.on-cfg select{padding:.35em .7em;font-size:15px}
-  .online-panel .on-actions .btn{padding:.55em 1em}
-  .on-room{gap:10px}
-}
-@media (max-height:440px){
-  .online-panel{padding:10px 16px;gap:8px}
-  .online-panel .eyebrow{display:none}
-  .online-panel h2{font-size:19px}
-  .on-roomhead b{display:inline;font-size:20px;margin-left:.4em}
-  .on-list{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .on-list li{padding:4px 8px;font-size:13px}
-  .on-list li small{display:none}
-  .on-note{font-size:13px}
-}
 .legend.got{border-color:var(--gold);background:rgba(255,195,90,.18)}
 .legend b{color:var(--gold);font-family:var(--font-num);letter-spacing:.1em;font-size:14px}
 .set-list{display:grid;gap:8px}
@@ -380,7 +335,6 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
 }
 @media (max-width:1100px) and (min-height:521px){ :root{--hud-fs:14px} }
 @media (max-height:780px) and (min-height:521px){
-  .menu #btn-online{grid-column:1/-1;text-align:left;align-items:flex-start}
   .title-col{gap:10px}
   .tagline{margin:0}
   .menu{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -417,7 +371,6 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
   .menu{grid-template-columns:repeat(3,minmax(0,1fr))}
   .menu #btn-start{grid-column:1/-1}
   .menu .btn:not(#btn-start){font-size:13px;padding:.55em .6em;text-align:center;align-items:center}
-  .menu #btn-online{grid-column:1/-1;flex-direction:row;justify-content:center;gap:.6em}
   .course-pick{margin-top:0;font-size:13px}
   .course-pick .seg button{font-size:13px;padding:.35em .7em}
   .demo-note{font-size:11px;margin:0;line-height:1.4}
@@ -512,7 +465,6 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
       <p class="tagline">1万年以上、まだ走ってます。</p>
       <nav class="menu" aria-label="メインメニュー">
         <button class="btn primary" id="btn-start" data-autofocus>走りはじめる<small id="start-sub">01 原始時代 ・ ERA RUN</small></button>
-        <button class="btn" id="btn-online">オンライン対戦<small>最大6人で同時に走る</small></button>
         <button class="btn" id="btn-era">時代を選ぶ</button>
         <button class="btn" id="btn-album">おじさんアルバム</button>
         <button class="btn" id="btn-settings">設定</button>
@@ -529,39 +481,6 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
 
       <p class="keys" id="title-keys"></p>
       <p class="demo-note">原始時代から令和まで全9時代。キャラクター・背景・音はすべてプログラムで作っています。</p>
-    </div>
-  </section>
-
-  <!-- ONLINE -->
-  <section class="screen" id="scr-online" hidden>
-    <div class="panel online-panel">
-      <div class="panel-head"><p class="eyebrow">ONLINE RACE</p><h2>オンライン対戦</h2><p class="muted" style="margin:0">最大6人で同時に走ります。足りない枠はコンピューターが入ります。ちょっかいアイテムはほかのプレイヤーにも当たります。</p></div>
-      <p class="on-note muted" id="on-noserver" hidden>サーバーの準備はいりません。部屋を作った人のブラウザが中継役になります。</p>
-      <div class="on-join" id="on-join">
-        <label class="on-field"><span>なまえ</span><input id="on-name" maxlength="12" autocomplete="off" spellcheck="false"></label>
-        <div class="on-actions">
-          <button class="btn primary" id="on-quick">クイック対戦<small>だれかと自動でマッチ</small></button>
-          <button class="btn" id="on-create">部屋を作る<small>コードを友だちに教える</small></button>
-          <div class="on-code"><input id="on-code" maxlength="5" autocomplete="off" spellcheck="false" aria-label="部屋コード"><button class="btn" id="on-joinbtn">参加</button></div>
-        </div>
-      </div>
-      <div class="on-room" id="on-room" hidden>
-        <div class="on-roomhead"><div><span class="muted">部屋コード</span><b id="on-roomcode">-----</b></div><button class="btn mini" id="on-copy">コードをコピー</button></div>
-        <ol class="on-list" id="on-list"></ol>
-        <div class="on-cfg"><label><span>時代</span><select id="on-era" aria-label="時代"></select></label>
-          <span class="seg" role="group" aria-label="コースの長さ"><button id="on-std" aria-pressed="true">標準 2,400 m</button><button id="on-short" aria-pressed="false">短縮 600 m</button></span></div>
-        <p class="muted on-note" id="on-wait"></p>
-      </div>
-      <p class="on-status" id="on-status" role="status" hidden></p>
-      <details class="on-adv" id="on-adv"><summary>サーバー設定</summary>
-        <label class="on-field"><span>サーバーURL</span><input id="on-server" autocomplete="off" spellcheck="false"></label>
-        <small class="muted">空欄のままで遊べます（ブラウザどうしで直接つながります）。自分で立てたサーバーを使うときだけ URL を入れます。</small></details>
-      <div class="row-actions">
-        <button class="btn primary mini" id="on-start" hidden>スタート</button>
-        <button class="btn mini" id="on-leave" hidden>部屋を出る</button>
-        <span class="spacer"></span>
-        <button class="btn mini" id="on-back">タイトルへ</button>
-      </div>
     </div>
   </section>
 
@@ -668,13 +587,11 @@ kbd{font-family:var(--font-num);font-weight:700;background:var(--cream);color:#1
       <div class="r-grid" id="r-grid"></div>
       <ol class="standings" id="r-stand" hidden></ol>
       <p class="r-note" id="r-note"></p>
-      <p class="r-net" id="r-net" hidden></p>
       <div class="r-actions">
         <button class="btn primary" id="r-retry">もう一度走る<small id="r-retry-sub">チェックポイントから</small></button>
         <button class="btn" id="r-image">結果画像を保存<small>1200×630</small></button>
         <button class="btn" id="r-next" hidden>次の時代へ<small id="r-next-sub">02 古代文明</small></button>
         <button class="btn" id="r-era">時代選択へ<small>&nbsp;</small></button>
-        <button class="btn primary" id="r-lobby" hidden>部屋に戻る<small>次のレースへ</small></button>
       </div>
       <button class="linkbtn" id="r-restart">最初から走りなおす</button>
     </div>
@@ -2587,13 +2504,7 @@ const EN = {
   '区間 1 / 6 クリア': 'Section 1 / 6 clear', '紀元前 8,834 年': '8,834 BC', '連打再開まで': 'Mash again in', 'SPACE 連打で走る': 'Mash SPACE to run',
   'アバター領域': 'Avatar area', '（重要な表示を置かない）': '(keep key info out)', '左へ': 'Left', '右へ': 'Right', 'RUN（左手）': 'RUN (left hand)',
   '減速': 'SLOW', 'ポーズ': 'Pause', 'BC10,000 — 1万年を駆けぬけろ': '10,000 BC — run through ten thousand years', '1万年以上、まだ走ってます。': 'Still running after 10,000 years.',
-  'メインメニュー': 'Main menu', '走りはじめる': 'Start running', '01 原始時代 ・ ERA RUN': '01 Stone Age · ERA RUN', '次の時代へ': 'Next era', 'オンライン対戦': 'Online race', '最大6人で同時に走る': 'Up to 6 players at once',
-  '最大6人で同時に走ります。足りない枠はコンピューターが入ります。ちょっかいアイテムはほかのプレイヤーにも当たります。': 'Up to six players race at the same time. Computer rivals fill any empty places. Mischief items hit other players too.',
-  'サーバーの準備はいりません。部屋を作った人のブラウザが中継役になります。': 'No server needed: the player who opens a room hosts it in their own browser.',
-  'なまえ': 'Name', 'クイック対戦': 'Quick match', 'だれかと自動でマッチ': 'Race whoever is around', '部屋を作る': 'Create a room', 'コードを友だちに教える': 'Share the code with friends', '参加': 'Join',
-  '部屋コード': 'Room code', 'コードをコピー': 'Copy code', '時代': 'Era', 'サーバー設定': 'Server settings', 'サーバーURL': 'Server URL',
-  '空欄のままで遊べます（ブラウザどうしで直接つながります）。自分で立てたサーバーを使うときだけ URL を入れます。': 'Leave this empty to connect browser to browser. Only enter a URL to use a server you run yourself.',
-  'スタート': 'Start', '部屋を出る': 'Leave room', '部屋に戻る': 'Back to the room', '次のレースへ': 'Next race', '02 古代文明': '02 Ancient Civilizations', '時代を選ぶ': 'Choose an era',
+  'メインメニュー': 'Main menu', '走りはじめる': 'Start running', '01 原始時代 ・ ERA RUN': '01 Stone Age · ERA RUN', '次の時代へ': 'Next era', '02 古代文明': '02 Ancient Civilizations', '時代を選ぶ': 'Choose an era',
   'おじさんアルバム': 'Ojisan album', '設定': 'Settings', 'モード': 'Mode', '6人レース': '6-man race', 'タイムアタック': 'Time attack', 'コース': 'Course',
   'コースの長さ': 'Course length', '休憩': 'Breaks', '焚き火での休憩': 'Bonfire breaks', '区間ごとに休む': 'Rest at each gate', '休まず走る': 'Run straight through', '標準 2,400 m': 'Standard 2,400 m', '短縮 600 m': 'Short 600 m', '言語': 'Language',
   '原始時代から令和まで全9時代。キャラクター・背景・音はすべてプログラムで作っています。': 'Nine eras, from the Stone Age to today. Characters, scenery and sound are all made in code.', '体験版・原始時代のみ。キャラクター・背景・音はすべてプログラムで作っています。': 'Demo: Stone Age only. Characters, scenery and sound are all made in code.',
@@ -2694,10 +2605,6 @@ const inPlay = () => G.state === 'running' || G.state === 'ready' || G.state ===
 window.addEventListener('keydown', (e) => {
   Snd.unlock();
   const c = e.code;
-  if (e.target && e.target.matches && e.target.matches('input, select, textarea')) {   // typing a name or a room code
-    if (c === 'Escape') e.target.blur(); else if ((c === 'Enter' || c === 'NumpadEnter') && e.target.id === 'on-code') $('on-joinbtn').click();
-    return;
-  }
   if ((c === 'KeyB' || c === 'KeyM') && !e.repeat && !e.ctrlKey && !e.metaKey && !e.altKey) {
     if (c === 'KeyB') toggleMusic();
     else { Snd.setMute(!G.save.settings.muted); writeSave(); toastMenu(G.save.settings.muted ? LL('ミュート（M で解除）', 'Muted (M to unmute)') : LL('ミュート解除', 'Unmuted')); }
@@ -2724,7 +2631,7 @@ window.addEventListener('keyup', (e) => {
 }, { passive: false });
 window.addEventListener('blur', () => { Input.keys.clear(); for (const k in Input.touch) Input.touch[k] = false; autoPause(); });
 document.addEventListener('visibilitychange', () => { if (document.hidden) { Input.keys.clear(); autoPause(); } Snd.suspend(document.hidden); });
-function autoPause() { if (onlineRun()) return; if (G.state === 'running' || G.state === 'ready') pauseGame(LL('フォーカスが外れたので一時停止しました。', 'Paused because the window lost focus.')); }
+function autoPause() { if (G.state === 'running' || G.state === 'ready') pauseGame(LL('フォーカスが外れたので一時停止しました。', 'Paused because the window lost focus.')); }
 
 function bindTouch(id, key, onDown) {
   const el = $(id);
@@ -3597,7 +3504,7 @@ const RIVALS = [
   { name: 'ノボル', en: 'Noboru', tagEn: 'Loves his sake', color: '#e5c43a', voice: 'noboru', tag: '酒に目がない', policy: { rate: 5.1, drink: true, missRate: 0.06 },                         x: 1.4,  z: 2 },
   { name: 'ヒロシ', en: 'Hiroshi', tagEn: 'Rests a lot', color: '#b06ae8', voice: 'hiroshi', tag: '休みがち',     policy: { rate: 4.9, rest: true, restBelow: 45, restFor: 2.2, missRate: 0.05 }, x: -0.7, z: 4.2 }
 ];
-const raceOn = () => !!(G.run && G.run.online) || !!G.save.settings.raceMode;
+const raceOn = () => !!G.save.settings.raceMode;
 function runPrompt() {   // READY line and the controller toast
   const h = holdMode(), k = isCoarse ? 'RUN' : PAD.connected ? 'A' : 'SPACE';
   return h ? LL(k + ' 長押しで走る', 'Hold ' + k + ' to run') : LL(k + ' 連打で走る', 'Mash ' + k + ' to run');
@@ -3611,8 +3518,6 @@ function titleKeysHTML() {
 }
 const tmpV3 = new THREE.Vector3();
 G.npcs = [];
-const NET_PROTO = 1, NET_MAX = 6;
-const NET = G.net = { on: false, ws: null, id: null, code: null, pub: false, host: null, players: [], cfg: { era: 0, short: false }, phase: 'off', offset: 0, rtt: 9999, race: null, autoAt: 0, pingT: 0, sendT: 0, status: '', busy: false };
 function makeHachimakiTex(color) {   // the rear poses at half size, with a coloured headband wrapped round the head and knot tails at the back
   const PM = ARTX.PM, img = ARTX.posesImg, sc = 0.5;
   const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc);
@@ -3639,22 +3544,11 @@ function setupRivals() {
   clearRivals();
   G.lastRank = null; G.rankToastT = 0; G.playerFinT = null;
   if (!raceOn()) return;
-  if (G.run && G.run.online) {   // online: computer rivals in the empty places (run by the host), then the other players
-    const R = NET.race, others = R.order.filter(p => p.id !== NET.id), nb = clamp(NET_MAX - R.order.length, 0, RIVALS.length), hosting = R.host === NET.id;
-    for (let j = 0; j < nb; j++) addRival(RIVALS[j], j, { key: 'b' + j, botIdx: j, remote: !hosting });
-    others.slice(0, RIVALS.length - nb).forEach((p, k) => addRival(RIVALS[nb + k], nb + k, { key: p.id, human: true, remote: true, name: p.name }));
-    return;
-  }
-  RIVALS.forEach((def, i) => addRival(def, i));
-}
-function addRival(def, i, o) {
-  o = o || {};
-  {
+  RIVALS.forEach((def, i) => {
     const run = T.newRun(G.course);
     Object.assign(run.p, { x: def.x, z: def.z, prevX: def.x, prevZ: def.z }); run.lastSafe = { x: def.x, y: run.p.y, z: def.z };
-    const n = { def, name: o.name || LL(def.name, def.en), color: def.color, run, bot: o.remote ? null : T.makeBot(Object.assign({}, def.policy)), baseRate: def.policy.rate,
-      phase: i * 1.3, seed: i * 0.37, respawnT: 0, hidden: false, finished: false, finishT: 0, deaths: 0, lastRes: null,
-      key: o.key || null, botIdx: o.botIdx != null ? o.botIdx : null, human: !!o.human, remote: o.remote ? { buf: [] } : null };
+    const n = { def, name: LL(def.name, def.en), color: def.color, run, bot: T.makeBot(Object.assign({}, def.policy)), baseRate: def.policy.rate,
+      phase: i * 1.3, seed: i * 0.37, respawnT: 0, hidden: false, finished: false, finishT: 0, deaths: 0, lastRes: null };
     if (ARTX.ready) {
       n.tex = ARTX.npcTex[i] || (ARTX.npcTex[i] = makeHachimakiTex(def.color));
       n.sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: n.tex, transparent: true, alphaTest: 0.12 }));
@@ -3668,20 +3562,19 @@ function addRival(def, i, o) {
     n.tagEl = document.createElement('div'); n.tagEl.className = 'npc-tag'; n.tagEl.style.setProperty('--c', def.color); n.tagEl.textContent = n.name; n.tagEl.hidden = true; $('npc-tags').appendChild(n.tagEl);
     n.dot = document.createElement('span'); n.dot.className = 'npc'; n.dot.style.background = def.color; $('prog').appendChild(n.dot);
     G.npcs.push(n);
-  }
+  });
 }
 function stepRivals() {
   if (!G.npcs.length) return;
-  let pz = G.run.p.z;
-  if (G.run.online) { let sum = Math.min(pz, G.course.L), k = 1; for (const n of G.npcs) if (n.human) { sum += Math.min(n.run.p.z, G.course.L); k++; } pz = sum / k; }   // online: the computer paces itself on the pack of players
+  const pz = G.run.p.z;
   for (const n of G.npcs) {
-    if (n.finished || n.remote) continue;   // other players' runners move by their reports (netTick)
+    if (n.finished) continue;
     if (n.respawnT > 0) { n.respawnT -= STEP; if (n.respawnT <= 0) { T.resetForRetry(n.run); n.bot.lastGap = null; n.bot.missThis = false; n.hidden = false; } continue; }
     const gap = n.run.p.z - pz;
     n.bot.rate = Math.min(6, n.baseRate * (gap > 60 ? 0.86 : gap > 30 ? 0.94 : gap < -60 ? 1.14 : gap < -30 ? 1.06 : 1));
     T.simStep(n.run, T.botInput(n.run, n.bot, STEP), STEP); n.run.events.length = 0;
     const r = n.run.result;
-    if (r === 'clear') { n.finished = true; n.finishT = G.run.online ? netRaceTime() : G.run.runTime; n.run.result = null; n.run.p.vz = 0; }
+    if (r === 'clear') { n.finished = true; n.finishT = G.run.runTime; n.run.result = null; n.run.p.vz = 0; }
     else if (r) { n.deaths++; n.lastRes = r; n.respawnT = 1.6; n.hidden = r === 'fall'; if (r === 'fall' && Math.abs(n.run.p.z - pz) < 35) rivalSay(n, 'fall', { gain: 0.7 }); }
   }
 }
@@ -3698,7 +3591,7 @@ function rivalSay(n, id, o) {   // a rival's line: their own voice, panned to wh
 function standings() {
   const L = G.course.L;
   const list = [{ me: true, name: LL('あなた', 'You'), color: '#ffffff', z: Math.min(G.run.p.z, L), fin: G.playerFinT != null, finT: G.playerFinT }];
-  for (const n of G.npcs) list.push({ me: false, npc: n, name: n.human ? escHTML(n.name) : n.name, tag: n.human ? LL('オンライン', 'Online') : LL(n.def.tag, n.def.tagEn), color: n.color, z: n.finished ? L : Math.min(n.run.p.z, L), fin: n.finished, finT: n.finishT });
+  for (const n of G.npcs) list.push({ me: false, npc: n, name: n.name, tag: LL(n.def.tag, n.def.tagEn), color: n.color, z: n.finished ? L : Math.min(n.run.p.z, L), fin: n.finished, finT: n.finishT });
   list.sort((a, b) => (a.fin && b.fin) ? a.finT - b.finT : a.fin ? -1 : b.fin ? 1 : b.z - a.z);
   return list;
 }
@@ -3920,7 +3813,7 @@ const CH_ICON = {
   conch: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 27q2-15 17-19l11-3-3 10q-3 15-18 16z" fill="#f2d6b3" stroke="#9a6a48" stroke-width="2" stroke-linejoin="round"/><path d="M13 29q2-9 10-12M18 30q2-6 8-9M23 28q1-3 4-5" stroke="#c08a62" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="2" y="25" width="7" height="6" rx="2" transform="rotate(-35 5 28)" fill="#7a4a2a"/></svg>',
   pot: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11 12q-4-6 2-6l3 3 4-5 4 5 3-3q6 0 2 6l-2 3q3 3 3 9 0 10-10 11-10-1-10-11 0-6 3-9z" fill="none" stroke="rgba(246,234,214,.35)" stroke-width="2" stroke-dasharray="3 3"/></svg>'
 };
-const chOn = () => raceOn() && (!!(G.run && G.run.online) || G.save.settings.chotto !== false);
+const chOn = () => raceOn() && G.save.settings.chotto !== false;
 const chName = (k) => LL(CH_NAME[k][0], CH_NAME[k][1]);
 
 /* ---------- meshes (built once, shared) ---------- */
@@ -4056,13 +3949,13 @@ function stepChotto(dt) {
       pot.up = false; pot.respawn = 6;
       chPotBreak(pot, u);
       if (u.me) { if (!C.mine) { C.mine = chRoll(chRankOf(u, list), list.length); C.rollT = 0.75; Snd.sfx('itemRoll'); } }
-      else if (netAuth(u) && !u.n.item && Math.random() < 0.55) { u.n.item = chRoll(chRankOf(u, list), list.length); u.n.itemAge = 0; u.n.itemWait = 1.5 + Math.random() * 3; }
+      else if (!u.n.item && Math.random() < 0.55) { u.n.item = chRoll(chRankOf(u, list), list.length); u.n.itemAge = 0; u.n.itemWait = 1.5 + Math.random() * 3; }
       break;
     }
   }
   // rivals decide when to use what they carry
   for (const u of list) {
-    if (u.me || !u.n.item || !netAuth(u)) continue;
+    if (u.me || !u.n.item) continue;
     const n = u.n; n.itemAge += dt; if (n.itemAge < n.itemWait) continue;
     const z = u.r.p.z, late = n.itemAge > 9;
     let go = false;
@@ -4090,15 +3983,14 @@ function stepChotto(dt) {
     if (b.t > 32) { C.burrs.splice(i, 1); C.root.remove(b.mesh); continue; }
     for (const u of list) {
       if (u.r === b.owner.r && b.t < 1.4) continue;
-      if (!netAuth(u)) continue;   // another game decides whether its runner stepped on it
       const p = u.r.p; if (!p.grounded || Math.abs(p.z - b.z) > 0.55 || Math.abs(p.x - b.x) > 0.55) continue;
-      C.burrs.splice(i, 1); C.root.remove(b.mesh); if (b.id) netSend({ t: 'bg', id: b.id, u: netKey(u) }); chHit(u, 'burr', b.owner); break;
+      C.burrs.splice(i, 1); C.root.remove(b.mesh); chHit(u, 'burr', b.owner); break;
     }
   }
 }
 
 /* ---------- using an item ---------- */
-function chUse(u, kind, list, net) {   // net: the message when replaying another game's item
+function chUse(u, kind, list) {
   const C = G.ch, M = chMeshes(), p = u.r.p, near = Math.abs(p.z - G.run.p.z) < 45;
   if (u.me) C.used++; else C.npcUsed++;
   chPop(u, kind);
@@ -4107,29 +3999,23 @@ function chUse(u, kind, list, net) {   // net: the message when replaying anothe
   const pan = clamp(-(p.x - G.run.p.x) / 4, -0.8, 0.8), gain = u.me ? 1 : clamp(1 - Math.abs(p.z - G.run.p.z) / 40, 0.15, 0.9);
   if (kind === 'boomerang') {
     let best = null;
-    if (net) best = net.to ? netUnit(net.to) : null;
-    else for (const o of list) { const d = o.r.p.z - p.z; if (o.r !== u.r && d > 0.8 && d < 32 && (!best || d < best.r.p.z - p.z)) best = o; }
+    for (const o of list) { const d = o.r.p.z - p.z; if (o.r !== u.r && d > 0.8 && d < 32 && (!best || d < best.r.p.z - p.z)) best = o; }
     const mesh = M.boom.clone(); scene.add(mesh);
     const p0 = new THREE.Vector3(p.x + 0.3, p.y + 1.3, p.z + 0.3);
     const dist = best ? Math.hypot(best.r.p.z - p.z, best.r.p.x - p.x) : 0;
-    const dur = net && net.d ? net.d : best ? clamp(dist / 19, 0.32, 1.4) : 1.15;
-    C.shots.push({ from: u, target: best, t: 0, dur, p0, pos: p0.clone(), mesh });
-    if (!net) netItemOut(u, 'boomerang', { to: best ? netKey(best) : '', d: Math.round(dur * 100) / 100 });
+    C.shots.push({ from: u, target: best, t: 0, dur: best ? clamp(dist / 19, 0.32, 1.4) : 1.15, p0, pos: p0.clone(), mesh });
     Snd.sfx('throw', { gain, pan });
     if (u.me && Math.random() < 0.5) Snd.voice('grunt');
   } else if (kind === 'burr') {
-    const z = net && net.z != null ? net.z : p.z - 1.1, x = net && net.x != null ? net.x : p.x, s = T.supportAt(G.course, z, (net && net.y != null ? net.y : p.y) + 2), y = s ? s.y : p.y;
-    const mesh = new THREE.Mesh(M.burrGeo, M.burrMat); mesh.scale.setScalar(1.35); mesh.position.set(x, y + 0.19, z); mesh.rotation.set(Math.random() * 3, Math.random() * 3, 0); C.root.add(mesh);
-    const id = net ? net.id : onlineRun() ? NET.id + '-' + (++NET.race.burrSeq) : null;
-    C.burrs.push({ x, y, z, t: 0, owner: u, mesh, id });
-    if (!net) netItemOut(u, 'burr', { x: Math.round(x * 100) / 100, y: Math.round(y * 100) / 100, z: Math.round(z * 100) / 100, id });
+    const z = p.z - 1.1, s = T.supportAt(G.course, z, p.y + 2), y = s ? s.y : p.y;
+    const mesh = new THREE.Mesh(M.burrGeo, M.burrMat); mesh.scale.setScalar(1.35); mesh.position.set(p.x, y + 0.19, z); mesh.rotation.set(Math.random() * 3, Math.random() * 3, 0); C.root.add(mesh);
+    C.burrs.push({ x: p.x, y, z, t: 0, owner: u, mesh });
     Snd.sfx('burrDrop', { gain, pan });
   } else {
     const mat = new THREE.MeshBasicMaterial({ color: 0xffe2a0, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
     const mesh = new THREE.Mesh(M.waveGeo, mat); mesh.rotation.x = -Math.PI / 2; mesh.position.set(p.x, p.y + 0.15, p.z); scene.add(mesh);
     C.waves.push({ t: 0, mesh });
     Snd.sfx('conchBlow', { gain, pan });
-    if (!net) netItemOut(u, 'conch', {});
     for (const o of list) if (o.r !== u.r && Math.abs(o.r.p.z - p.z) < 8 && Math.abs(o.r.p.x - p.x) < 6) chHit(o, 'conch', u);
   }
 }
@@ -4137,17 +4023,13 @@ function chHit(t, kind, from) {
   const C = G.ch; if (!C) return;
   if (t.me ? G.state !== 'running' : (t.n.finished || t.n.respawnT > 0)) return;
   const r = t.r, head = chHead(t, tmpV2), byMe = from && from.me;
-  if (!netAuth(t)) { burst(head.x, head.y, head.z, 14, 3, 0.5, 0.22, 1, 0.9, 0.35, 2); return; }   // another game decides this hit: only show it
-  const tellThrower = onlineRun() && from && from.n && from.n.human ? (w) => netSend({ t: 'hr', to: from.n.key, u: netKey(t), k: kind, w }) : null;
   if (r.buffs.wig > 0) {   // the wig shrugs it off
-    if (tellThrower) tellThrower(true);
     burst(head.x, head.y, head.z, 16, 3, 0.5, 0.2, 1, 0.85, 0.4, 0);
     Snd.sfx('block', { gain: t.me || byMe ? 1 : 0.5 });
     if (t.me) toast(LL('カツラが守ってくれた！', 'The wig saved you!')); else if (byMe) toast(LL(t.name + 'はカツラで無敵だった…', t.name + ' is wearing a wig — no effect'));
     return;
   }
   if (chImmune(t)) return;
-  if (tellThrower) tellThrower(false);
   // a hit right before a hole (or in the air) only costs momentum: an item should never throw you into the lava
   if (chHoleNear(r.p)) r.momentum *= 0.7; else { r.stumble = Math.max(r.stumble, CH_STUN[kind]); r.momentum *= 0.4; r.uHighT = 0; }
   if (t.me) C.immune = 3; else t.n.chImmune = 1.6;
@@ -4920,7 +4802,7 @@ function makeItem(it) {
 }
 
 /* ======================= GAME FLOW ======================= */
-const SCREENS = ['scr-title', 'scr-era', 'scr-album', 'scr-settings', 'scr-pause', 'scr-result', 'scr-break', 'scr-sound', 'scr-online'];
+const SCREENS = ['scr-title', 'scr-era', 'scr-album', 'scr-settings', 'scr-pause', 'scr-result', 'scr-break', 'scr-sound'];
 function showScreen(id) {   // first focus: a [data-autofocus] button (the title's 「走りはじめる」), else the first button
   SCREENS.forEach(s => { $(s).hidden = s !== id; });
   $('safezone').hidden = !(id === 'scr-settings' && G.save.settings.safeZone);
@@ -4980,7 +4862,7 @@ function fitTitle() {
 }
 function startRun() {
   ensureCourse();
-  G.run = T.newRun(G.course); G.run.online = !!(NET.race && NET.race.pending); G.savedTaps = 0; G.ghostRes = null;
+  G.run = T.newRun(G.course); G.savedTaps = 0; G.ghostRes = null;
   setupRivals(); setupGhost(); recStart(); setupChotto();
   $('t-rank-row').hidden = !G.npcs.length; $('rank').hidden = !G.npcs.length; hudCache.rankHTML = null;
   G.camMode = 'follow';
@@ -5034,13 +4916,11 @@ function resumeGame() {
 function onEscape() {
   if (!$('modal-confirm').hidden) { closeConfirm(); return; }
   if (!$('modal-image').hidden) { $('modal-image').hidden = true; return; }
-  if ((G.state === 'running' || G.state === 'ready') && onlineRun()) { netQuitAsk(); return; }   // an online race can't be paused
   if (G.state === 'running' || G.state === 'ready') { Snd.play('back'); pauseGame(); return; }
   if (G.state === 'paused') { if (!$('scr-settings').hidden) closeSettings(); else resumeGame(); return; }
   if (!$('scr-sound').hidden) { closeSoundTest(); return; }
   if (!$('scr-settings').hidden) { closeSettings(); return; }
   if (!$('scr-era').hidden || !$('scr-album').hidden) { Snd.play('back'); goTitle(); }
-  if (!$('scr-online').hidden) { $('on-back').click(); }
 }
 
 /* ---------- run end ---------- */
@@ -5052,8 +4932,7 @@ function onRunEnd() {
   if (rec.year == null || year > rec.year) rec.year = year;
   s.totalTaps += run.stats.taps - G.savedTaps; G.savedTaps = run.stats.taps;
   if (r === 'clear') {
-    G.playerFinT = run.online ? netRaceTime() : run.runTime;
-    if (run.online) netSend({ t: 'fin', time: Math.round(G.playerFinT * 100) / 100, deaths: run.stats.deaths });
+    G.playerFinT = run.runTime;
     setState('clearing'); G.endT = 2.8; G.camMode = 'clear';
     Snd.sting('clearHit'); Snd.cue('clear', { fade: 0.05 }); Snd.sfx('crowd', { dur: 3.2, gain: 1.2 }); react('clear', { force: true });
     burst(0, p.y + 1.5, p.z, 40, 6, 0.9, 0.35, 1, 0.8, 0.3, 4);
@@ -5097,13 +4976,13 @@ function showResult() {
     $('r-sub').textContent = era === 8 ? LL('BC10,000から1万2千年、完走。ブロマイド 09 を獲得。', '12,000 years from 10,000 BC, all run. Got portrait card 09.')
       : LL('現代まで、あと' + fmtInt(yearRemain(ED.end)) + '年。ブロマイド ' + ERAS[era].no + ' を獲得。', fmtInt(yearRemain(ED.end)) + ' years to the present. Got portrait card ' + ERAS[era].no + '.');
   } else {
-    $('r-head').textContent = yearText(yNow) + (run.result === 'fall' ? LL('、おじさん、' + INFO.below[0] + 'へ。', '. Ojisan ' + INFO.fallEn + '.') : run.result === 'timeup' ? LL('、タイムアップ。', '. Time is up.') : LL('、火が消えた。', '. The flame went out.'));
+    $('r-head').textContent = yearText(yNow) + (run.result === 'fall' ? LL('、おじさん、' + INFO.below[0] + 'へ。', '. Ojisan ' + INFO.fallEn + '.') : LL('、火が消えた。', '. The flame went out.'));
     $('r-sub').textContent = LL('現代まで、あと' + fmtInt(yearRemain(yNow)) + '年だった。', fmtInt(yearRemain(yNow)) + ' years short of the present.');
   }
   const tiles = [
-    run.online && clear ? [LL('ゴールタイム', 'Finish time'), fmtTime(G.playerFinT)] : [LL('走行時間', 'Run time'), fmtTime(run.runTime)],
+    [LL('走行時間', 'Run time'), fmtTime(run.runTime)],
     holdMode() ? [LL('走行距離', 'Distance'), fmtInt(clear ? L : Math.max(st.maxZ - 2, 0)) + ' m'] : [LL('連打', 'Taps'), fmtInt(st.taps) + LL(' 回', '')],
-    clear ? [LL('死亡回数', 'Deaths'), st.deaths + LL(' 回', '')] : [LL('死亡原因', 'Cause'), run.result === 'fall' ? LL(INFO.below[0] + 'に落下', INFO.fallEn.charAt(0).toUpperCase() + INFO.fallEn.slice(1)) : run.result === 'timeup' ? LL('タイムアップ', 'Out of time') : LL('たいまつの火が0', 'Torch went out'), true],
+    clear ? [LL('死亡回数', 'Deaths'), st.deaths + LL(' 回', '')] : [LL('死亡原因', 'Cause'), run.result === 'fall' ? LL(INFO.below[0] + 'に落下', INFO.fallEn.charAt(0).toUpperCase() + INFO.fallEn.slice(1)) : LL('たいまつの火が0', 'Torch went out'), true],
     [LL('最高到達', 'Furthest'), yearText(yBest), true],
     [LL('カツラ / 酒', 'Wigs / sake'), st.wigs + LL(' 回 / ', ' / ') + st.alcohol + LL(' 回', '')],
     [LL('最高速度', 'Top speed'), Math.round(st.maxSpeed * 3.6) + ' km/h']
@@ -5119,14 +4998,11 @@ function showResult() {
   $('r-retry-sub').textContent = clear ? LL('最初から', 'From the start') : LL('CP ' + fmtInt(G.course.checkpoints[run.cp]) + ' m から', 'From CP ' + fmtInt(G.course.checkpoints[run.cp]) + ' m');
   $('r-restart').hidden = clear;
   $('r-next').hidden = !(clear && era < 8); if (era < 8) $('r-next-sub').textContent = eraLabel(era + 1);
-  const onl = !!run.online;   // online: the next race comes from the room
-  $('r-retry').hidden = onl; $('r-era').hidden = onl; $('r-lobby').hidden = !onl; $('r-net').hidden = !onl; $('r-note').hidden = onl;
-  if (onl) { $('r-restart').hidden = true; $('r-next').hidden = true; netResultPanel(); }
   G.resultData = { clear, yNow, yBest, tiles, taps: st.taps, dist: clear ? L : Math.max(st.maxZ - 2, 0), hold: holdMode(), deaths: st.deaths, cause: run.result };
-  if (!clear && run.result !== 'timeup') { Snd.cue('fail', { fade: 0.3 }); setTimeout(() => { if (G.state === 'result') Snd.voice('sigh'); }, 1700); }
+  if (!clear) { Snd.cue('fail', { fade: 0.3 }); setTimeout(() => { if (G.state === 'result') Snd.voice('sigh'); }, 1700); }
   showScreen('scr-result');
-  ['r-retry', 'r-image', 'r-era', 'r-restart', 'r-lobby'].forEach(id => $(id).disabled = true);
-  setTimeout(() => ['r-retry', 'r-image', 'r-era', 'r-restart', 'r-lobby'].forEach(id => $(id).disabled = false), 1000);
+  ['r-retry', 'r-image', 'r-era', 'r-restart'].forEach(id => $(id).disabled = true);
+  setTimeout(() => ['r-retry', 'r-image', 'r-era', 'r-restart'].forEach(id => $(id).disabled = false), 1000);
 }
 
 /* ---------- section goals ---------- */
@@ -5206,7 +5082,7 @@ function handleEvents() {
       case 'water': Snd.sfx('splash'); react('water', { force: true }); dmgPop('−' + e.amount); burst(p.x, p.y + 1.6, p.z, 30, 3.5, 0.6, 0.2, 0.75, 0.9, 1, 7); if (G.save.settings.shake) G.shake = 0.2; break;
       case 'checkpoint': {
         Snd.sting('gate'); Snd.sfx('crowd', { dur: 2.4 }); Snd.voice('gate', { force: true });
-        if (G.save.settings.breaks === false || G.run.online) showGateBanner(e); else G.pendingBreak = e;   // online: nobody stops
+        if (G.save.settings.breaks === false) showGateBanner(e); else G.pendingBreak = e;
         G.world.cpBowls[e.idx].forEach(b => { b.lit = true; burst(b.g.position.x, b.g.position.y + 0.4, b.g.position.z, 22, 5, 0.8, 0.3, 1, 0.65, 0.2, -2); });
         if (e.idx >= 1 && !G.save.tutorialDone) { G.save.tutorialDone = true; writeSave(); }
         break;
@@ -5322,7 +5198,7 @@ function updateHUD(dt) {
   const y = eraYearAt(p.z, L, G.course.era);
   setHTML('year', LANG.cur === 'en' ? '<span class="y-num">' + (y <= 0 ? fmtInt(1 - y) : y) + '</span><span class="y-suf">' + (y <= 0 ? 'BC' : 'AD') + '</span>' : y <= 0 ? '<span class="y-pre">紀元前</span><span class="y-num">' + fmtInt(1 - y) + '</span><span class="y-suf">年</span>' : '<span class="y-pre">西暦</span><span class="y-num">' + y + '</span><span class="y-suf">年</span>');
   setHTML('year-sub', LL('現代まで、あと<b>' + fmtInt(yearRemain(y)) + '</b>年', '<b>' + fmtInt(yearRemain(y)) + '</b> years to the present'));
-  setText('t-time', fmtTime(run.online ? (G.playerFinT != null ? G.playerFinT : netRaceTime()) : run.runTime)); /* online: the shared race clock */ setText('t-death', String(run.stats.deaths)); setText('t-taps-k', holdMode() ? LL('距離', 'DIST') : LL('連打', 'TAPS')); setText('t-taps', holdMode() ? fmtInt(Math.max(0, p.z - 2)) + ' m' : fmtInt(run.stats.taps));
+  setText('t-time', fmtTime(run.runTime)); setText('t-death', String(run.stats.deaths)); setText('t-taps-k', holdMode() ? LL('距離', 'DIST') : LL('連打', 'TAPS')); setText('t-taps', holdMode() ? fmtInt(Math.max(0, p.z - 2)) + ' m' : fmtInt(run.stats.taps));
   const rec = bestRec(); setText('t-best', rec && rec.time != null ? 'CLEAR ' + fmtTime(rec.time) : rec && rec.year != null ? yearShort(rec.year) : '—');
   const pr = clamp(p.z / L, 0, 1);
   $('prog-fill').style.transform = 'scaleX(' + pr.toFixed(4) + ')'; $('prog-me').style.left = (pr * 100).toFixed(2) + '%';
@@ -5652,7 +5528,6 @@ function frame(now) {
   if (G.toastT > 0) { G.toastT -= dt; if (G.toastT <= 0) $('toast').hidden = true; }
   if (G.gateT > 0 && G.state !== 'paused') { G.gateT -= dt; if (G.gateT <= 0) $('gate').hidden = true; }
   if (G.flashT > 0 && G.state === 'running') G.flashT -= dt;
-  netTick(dt);
   render(dt, G.acc / STEP);
   updateHUD(dt);
   updateAudio(dt);
@@ -5941,732 +5816,6 @@ function toastMenu(t) { document.querySelectorAll('.toast-menu').forEach(x => x.
 window.addEventListener('resize', resize);
 window.addEventListener('resize', fitTitle); window.addEventListener('resize', () => placeHint());
 
-/* ======================= ONLINE: race other players through a small relay server =======================
-   Each game runs its own ojisan and reports him ten times a second; the server passes reports on. The other
-   players appear as rivals replayed a moment behind real time. The room's host also runs the computer rivals
-   that fill the empty places and reports them the same way. Items: whoever owns the runner that gets hit
-   (the player himself, or the host for computer rivals) decides the hit; everyone else only shows it. */
-const NET_ALPHA = 'ABCDEFGHJKLMNPRSTUVWXYZ23456789';   // no I, O, Q, 0 or 1 in private room codes
-const onlineRun = () => !!(G.run && G.run.online && NET.race);
-const netRaceTime = () => NET.race ? Math.max(0, (performance.now() - NET.race.startLocal) / 1000) : (G.run ? G.run.runTime : 0);
-function netServer() {
-  let s = '';
-  try { s = new URLSearchParams(location.search).get('server') || ''; } catch (e) {}
-  s = String(s || G.save.settings.server || window.TORCH_SERVER || '').trim();
-  if (!s) return '';
-  s = s.replace(/\/+$/, '').replace(/\/ws$/i, '');
-  if (/^https?:\/\//i.test(s)) s = s.replace(/^http/i, 'ws');
-  else if (!/^wss?:\/\//i.test(s)) s = (/^(localhost|127\.|192\.168\.|10\.)/.test(s) ? 'ws://' : 'wss://') + s;
-  return s;
-}
-function netName() {
-  const s = G.save.settings;
-  if (!s.nick) { s.nick = LL('おじさん', 'Ojisan') + (10 + Math.floor(Math.random() * 90)); writeSave(); }
-  return s.nick;
-}
-function netSend(m) { if (NET.ws && NET.ws.readyState === 1) { try { NET.ws.send(JSON.stringify(m)); } catch (e) {} } }
-const NET_ERR = {
-  noserver: ['このゲームにはオンライン対戦のサーバーがまだ設定されていません。', 'No online server is set up for this copy of the game yet.'],
-  ver: ['ゲームのバージョンがサーバーと合いません。ページを再読み込みしてください。', 'This game version does not match the server. Reload the page.'],
-  noroom: ['その部屋コードは見つかりませんでした。', 'No room with that code.'],
-  full: ['その部屋は満員です（6人）。', 'That room is full (6 players).'],
-  started: ['その部屋はレース中です。終わってから参加してください。', 'That room is racing right now. Join when the race is over.'],
-  busy: ['部屋がいっぱいです。少し待ってからもう一度お試しください。', 'All rooms are busy. Try again in a moment.'],
-  closed: ['サーバーに接続できませんでした。', 'Could not reach the server.'],
-  lost: ['サーバーとの接続が切れました。', 'Lost the connection to the server.'],
-  broker: ['対戦相手を探す窓口（PeerJS の無料サーバー）につながりませんでした。インターネット接続を確かめて、もう一度お試しください。', 'Could not reach the matchmaking service (the free PeerJS server). Check your internet connection and try again.'],
-  nolink: ['相手のブラウザとつながりませんでした。会社や学校のネットワークでは止められていることがあります。別の Wi-Fi やスマホの回線でお試しください。', 'Could not connect to the other browser. Some office or school networks block this; try another Wi-Fi or mobile data.'],
-  hostgone: ['部屋を作った人との接続が切れました。', 'Lost the connection to the player who opened the room.'],
-  nortc: ['このブラウザはオンライン対戦（WebRTC）に対応していません。最新の Chrome・Edge・Firefox・Safari でお試しください。', 'This browser cannot do online races (no WebRTC). Try a current Chrome, Edge, Firefox or Safari.']
-};
-function netErrText(code) {
-  const e = NET_ERR[code] || NET_ERR.closed; let t = LL(e[0], e[1]);
-  if ((code === 'closed' || code === 'timeout') && location.protocol === 'https:' && /^ws:/i.test(netServer())) t += LL('（https のページからは wss:// のサーバーにしか接続できません）', ' (an https page can only reach a wss:// server)');
-  return t;
-}
-
-/* ---------- browser-to-browser rooms (the default: no server of our own) ----------
-   With no server URL set, the player who opens a room runs the room itself (ROOMCORE below: the very same code
-   as the Cloudflare server) inside their own game, and everyone else connects straight to that browser over a
-   WebRTC data channel. To find each other the games use PeerJS's free public broker (0.peerjs.com), which only
-   passes along the few messages that set up a connection: room ABCDE is broker id "kigenzen-ojirun-1-abcde".
-   The race itself then goes browser to browser, through the host. Tests point TORCH_PEER at a local broker. */
-const ROOMCORE = (() => {
-/* 紀元前おじラン！ online rooms — the room logic, shared by the Cloudflare Durable Object (src/index.js)
-   and the local Node server (dev/local-server.mjs).
-
-   A room holds up to 6 players. Each player's game runs its own ojisan and reports where he is about ten
-   times a second; the room passes those reports on to everyone else. The first player in the room is the
-   host: the host's game also runs the computer rivals that fill the empty places and reports them the same
-   way. The room itself never simulates the race. It keeps the roster, starts the race on a shared clock,
-   relays positions and mischief items, collects finish times and sends the final order.
-
-   Rooms whose code starts with QUICK are quick-match rooms: they start by themselves a little while after
-   a second player arrives. Any other code is a private room that starts when its host presses start.
-
-   io: { now(): ms, setTimer(ms, fn): handle, clearTimer(handle) }. A socket: { send(string), close(code, reason) }. */
-
-const PROTO = 1;
-const MAX_PLAYERS = 6;
-
-const DEFAULTS = {
-  lobbyAutoMs: 20000,     // quick match: start this long after the second player joins
-  fullAutoMs: 4000,       // ...or this soon once the room is full
-  afterRaceAutoMs: 40000, // quick match: the next race after a race ends
-  goDelayMs: 4500,        // countdown between "go" and the start
-  raceMaxMs: 15 * 60000,  // a race never runs longer than this
-  finishGraceMs: 90000,   // after the first finisher, the others get this long
-  idleMs: 45000,          // a player who sends nothing for this long is dropped
-  sweepMs: 10000
-};
-
-const ITEM_KINDS = new Set(['boomerang', 'burr', 'conch']);
-const str = (v, n) => (typeof v === 'string' ? v.slice(0, n) : undefined);
-const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? Math.round(v * 100) / 100 : undefined);
-const clampInt = (v, lo, hi, d) => { const n = parseInt(v, 10); return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d; };
-
-function cleanName(s) {
-  s = String(s == null ? '' : s).replace(/[\u0000-\u001f\u007f<>&"'`\\]/g, '').replace(/\s+/g, ' ').trim();
-  return Array.from(s).slice(0, 12).join('') || 'おじさん';
-}
-function validCode(code) { return typeof code === 'string' && /^[A-Z0-9]{4,8}$/.test(code); }
-
-class RoomCore {
-  constructor(code, io, opts) {
-    this.code = code; this.io = io; this.o = Object.assign({}, DEFAULTS, opts || {});
-    this.players = []; this.seq = 0; this.timers = {};
-    this.host = null; this.phase = 'lobby'; this.cfg = { era: 0, short: false }; this.autoAt = 0; this.race = null;
-    this.pub = /^QUICK/.test(code);
-  }
-
-  /* ---------- connections ---------- */
-  join(sock, q) {
-    q = q || {};
-    if ((parseInt(q.ver, 10) || 0) !== PROTO) return this.reject(sock, 'ver');
-    if (q.create === '1' && this.players.length) return this.reject(sock, 'taken');
-    if (q.join === '1' && !this.players.length) return this.reject(sock, 'noroom');
-    if (this.phase !== 'lobby') return this.reject(sock, 'started');
-    if (this.players.length >= MAX_PLAYERS) return this.reject(sock, 'full');
-    const now = this.io.now();
-    const p = { id: 'p' + (++this.seq), name: cleanName(q.name), sock, joined: now, last: now, fin: null, z: 0, rt: now, rn: 0 };
-    if (!this.players.length) {
-      this.host = p.id;
-      this.cfg = { era: clampInt(q.era, 0, 8, 0), short: q.short === '1' };
-      this.setTimer('sweep', this.o.sweepMs, () => this.sweep());
-    }
-    this.players.push(p);
-    this.send(p, { t: 'welcome', id: p.id, code: this.code, pub: this.pub, proto: PROTO, now });
-    this.broadcastRoom();
-    this.checkAuto();
-    return p;
-  }
-  reject(sock, code) {
-    try { sock.send(JSON.stringify({ t: 'err', code })); } catch (e) {}
-    try { sock.close(4000, code); } catch (e) {}
-    return null;
-  }
-  leave(p) {
-    const i = this.players.indexOf(p); if (i < 0) return;
-    this.players.splice(i, 1);
-    if (!this.players.length) { this.reset(); return; }
-    if (this.host === p.id) this.host = this.players[0].id;
-    this.broadcast({ t: 'left', id: p.id, host: this.host });
-    this.broadcastRoom();
-    if (this.phase === 'race') this.checkEnd();
-    this.checkAuto();
-  }
-  reset() {
-    for (const k of Object.keys(this.timers)) this.clearTimer(k);
-    this.phase = 'lobby'; this.race = null; this.autoAt = 0; this.host = null;
-  }
-
-  /* ---------- messages from a player ---------- */
-  message(p, raw) {
-    if (typeof raw !== 'string' || raw.length > 4096 || this.players.indexOf(p) < 0) return;
-    let m; try { m = JSON.parse(raw); } catch (e) { return; }
-    if (!m || typeof m.t !== 'string') return;
-    const now = this.io.now(); p.last = now;
-    if (now - p.rt > 1000) { p.rt = now; p.rn = 0; }
-    if (++p.rn > 45) return;   // flood guard: a game sends about 10–20 a second
-    switch (m.t) {
-      case 'ping': this.send(p, { t: 'pong', c: num(m.c), s: now }); return;
-      case 'cfg':
-        if (p.id !== this.host || this.phase !== 'lobby') return;
-        this.cfg = { era: clampInt(m.era, 0, 8, this.cfg.era), short: !!m.short };
-        this.broadcastRoom(); return;
-      case 'start': if (p.id === this.host && this.phase === 'lobby') this.startRace(); return;
-      case 'st':   // my ojisan: [z, x, y, vz, vx, vy, flags, stamina, flame, cp, finishTime]
-        if (this.phase !== 'race' || !Array.isArray(m.s) || m.s.length > 16) return;
-        p.z = num(m.s[0]) || 0;
-        this.relay(p, { t: 'st', id: p.id, s: m.s.map(num) }); return;
-      case 'npc':  // the host's computer rivals: [[index, ...same fields as st], ...]
-        if (this.phase !== 'race' || p.id !== this.host || !Array.isArray(m.b) || m.b.length > MAX_PLAYERS) return;
-        this.relay(p, { t: 'npc', b: m.b.filter(Array.isArray).map(a => a.slice(0, 16).map(num)) }); return;
-      case 'it': {  // someone used an item
-        if (this.phase !== 'race' || !ITEM_KINDS.has(m.k)) return;
-        this.relay(p, { t: 'it', from: p.id, k: m.k, u: str(m.u, 8), to: str(m.to, 8), x: num(m.x), y: num(m.y), z: num(m.z), d: num(m.d), id: str(m.id, 16) }); return;
-      }
-      case 'bg':   // a chestnut on the ground was stepped on
-        if (this.phase === 'race') this.relay(p, { t: 'bg', from: p.id, id: str(m.id, 16), u: str(m.u, 8) }); return;
-      case 'hr':   // a hit landed (or a wig blocked it): tells the thrower
-        if (this.phase === 'race') this.relay(p, { t: 'hr', from: p.id, to: str(m.to, 8), u: str(m.u, 8), k: ITEM_KINDS.has(m.k) ? m.k : undefined, w: !!m.w }); return;
-      case 'fin':
-        if (this.phase !== 'race' || p.fin) return;
-        p.fin = { time: num(m.time) || 0, deaths: clampInt(m.deaths, 0, 9999, 0) };
-        this.broadcast({ t: 'fin', id: p.id, time: p.fin.time, deaths: p.fin.deaths });
-        this.checkEnd(); return;
-      case 'leave': try { p.sock.close(1000, 'bye'); } catch (e) {} this.leave(p); return;
-    }
-  }
-
-  /* ---------- race flow ---------- */
-  startRace() {
-    this.clearTimer('auto'); this.autoAt = 0;
-    const now = this.io.now(), at = now + this.o.goDelayMs;
-    this.phase = 'race'; this.race = { at };
-    for (const q of this.players) { q.fin = null; q.z = 0; }
-    this.broadcast({ t: 'go', at, now, cfg: this.cfg, host: this.host, order: this.players.map(q => ({ id: q.id, name: q.name })), bots: MAX_PLAYERS - this.players.length });
-    this.setTimer('raceMax', this.o.goDelayMs + this.o.raceMaxMs, () => this.endRace('timeout'));
-  }
-  checkEnd() {
-    if (this.phase !== 'race') return;
-    if (this.players.every(q => q.fin)) return this.endRace('done');
-    if (this.players.some(q => q.fin) && !this.timers.grace) this.setTimer('grace', this.o.finishGraceMs, () => this.endRace('grace'));
-  }
-  endRace(why) {
-    if (this.phase !== 'race') return;
-    this.clearTimer('raceMax'); this.clearTimer('grace');
-    const list = this.players.map(q => ({ id: q.id, name: q.name, time: q.fin ? q.fin.time : null, z: q.z }))
-      .sort((a, b) => (a.time != null && b.time != null) ? a.time - b.time : a.time != null ? -1 : b.time != null ? 1 : b.z - a.z);
-    this.phase = 'lobby'; this.race = null;
-    for (const q of this.players) { q.fin = null; q.z = 0; }
-    this.broadcast({ t: 'results', why, list });
-    this.checkAuto(this.o.afterRaceAutoMs);
-    this.broadcastRoom();
-  }
-  checkAuto(wait) {
-    if (this.phase !== 'lobby' || !this.pub) return;
-    const n = this.players.length, now = this.io.now();
-    if (n < 2) { if (this.autoAt) { this.clearTimer('auto'); this.autoAt = 0; this.broadcastRoom(); } return; }
-    const want = now + (n >= MAX_PLAYERS ? this.o.fullAutoMs : (wait || this.o.lobbyAutoMs));
-    if (this.autoAt && this.autoAt <= want) return;
-    this.autoAt = want;
-    this.setTimer('auto', want - now, () => { this.autoAt = 0; if (this.phase === 'lobby' && this.players.length) this.startRace(); });
-    this.broadcastRoom();
-  }
-  sweep() {
-    const now = this.io.now();
-    for (const p of this.players.slice()) if (now - p.last > this.o.idleMs) { try { p.sock.close(4001, 'idle'); } catch (e) {} this.leave(p); }
-    if (this.players.length) this.setTimer('sweep', this.o.sweepMs, () => this.sweep());
-  }
-
-  /* ---------- sending ---------- */
-  roomMsg() {
-    return { t: 'room', code: this.code, pub: this.pub, host: this.host, phase: this.phase, cfg: this.cfg, autoAt: this.autoAt, now: this.io.now(), max: MAX_PLAYERS,
-      players: this.players.map(q => ({ id: q.id, name: q.name, fin: !!q.fin })) };
-  }
-  broadcastRoom() { this.broadcast(this.roomMsg()); }
-  send(p, msg) { try { p.sock.send(JSON.stringify(msg)); } catch (e) {} }
-  broadcast(msg) { const s = JSON.stringify(msg); for (const q of this.players) { try { q.sock.send(s); } catch (e) {} } }
-  relay(from, msg) { const s = JSON.stringify(msg); for (const q of this.players) if (q !== from) { try { q.sock.send(s); } catch (e) {} } }
-  setTimer(name, ms, fn) { this.clearTimer(name); this.timers[name] = this.io.setTimer(ms, () => { delete this.timers[name]; fn(); }); }
-  clearTimer(name) { if (this.timers[name] != null) { this.io.clearTimer(this.timers[name]); delete this.timers[name]; } }
-}
-
-return { RoomCore, PROTO, MAX_PLAYERS, validCode };
-})();
-const P2P_NS = 'kigenzen-ojirun-1-';
-const p2pOK = () => typeof RTCPeerConnection === 'function' && typeof WebSocket === 'function';
-const p2pTok = () => Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 8);
-function p2pCfg() {
-  const c = Object.assign({ host: '0.peerjs.com', port: 443, path: '/', key: 'peerjs', secure: true }, window.TORCH_PEER || {});
-  let p = String(c.path || '/'); if (p[0] !== '/') p = '/' + p; if (p[p.length - 1] !== '/') p += '/'; c.path = p;
-  // STUN only (finds each player's public address). There is no free relay (TURN), so a few strict networks cannot connect;
-  // a TURN server of your own can go in window.TORCH_ICE.
-  c.ice = window.TORCH_ICE || [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] }];
-  return c;
-}
-/* The broker (PeerServer protocol): a WebSocket per game; OPEN / ID-TAKEN on arrival, then OFFER / ANSWER / CANDIDATE
-   passed to "dst", EXPIRE when "dst" never showed up. */
-function p2pBroker(id) {
-  return new Promise((resolve, reject) => {
-    const c = p2pCfg(), url = (c.secure ? 'wss://' : 'ws://') + c.host + ':' + c.port + c.path + 'peerjs?key=' + encodeURIComponent(c.key) + '&id=' + encodeURIComponent(id) + '&token=' + p2pTok() + '&version=1.5.4';
-    const B = { id, on: null, ws: null, dead: false, tries: 0 };
-    let first = true;
-    const settle = (ok, why) => { if (!first) return; first = false; clearTimeout(to); if (ok) resolve(B); else { B.close(); reject(why); } };
-    const to = setTimeout(() => settle(false, 'broker'), 10000);
-    const hb = setInterval(() => { if (B.ws && B.ws.readyState === 1) { try { B.ws.send('{"type":"HEARTBEAT"}'); } catch (e) {} } }, 5000);
-    B.send = (type, dst, payload) => { if (B.ws && B.ws.readyState === 1) { try { B.ws.send(JSON.stringify({ type, dst, payload })); } catch (e) {} } };
-    B.close = () => { if (B.dead) return; B.dead = true; clearInterval(hb); const ws = B.ws; B.ws = null; if (ws) { try { ws.close(); } catch (e) {} } };
-    const connect = () => {
-      let ws = null; try { ws = new WebSocket(url); } catch (e) {}
-      if (!ws) { settle(false, 'broker'); return; }
-      B.ws = ws;
-      ws.onmessage = (ev) => {
-        let m; try { m = JSON.parse(ev.data); } catch (e) { return; }
-        if (!m || typeof m.type !== 'string') return;
-        if (m.type === 'OPEN') { B.tries = 0; settle(true); return; }
-        if (m.type === 'ID-TAKEN' || m.type === 'ERROR' || m.type === 'INVALID-KEY') { if (first) settle(false, m.type === 'ID-TAKEN' ? 'taken' : 'broker'); else B.close(); return; }
-        if (B.on) B.on(m);
-      };
-      ws.onerror = () => {};
-      ws.onclose = () => {
-        if (B.ws !== ws || B.dead) return; B.ws = null;
-        if (first) { settle(false, 'broker'); return; }
-        // the broker dropped us: links already open keep going; come back so new players can still find this room
-        if (++B.tries <= 30) setTimeout(() => { if (!B.dead) connect(); }, Math.min(10000, 1000 * B.tries));
-      };
-    };
-    connect();
-  });
-}
-/* One WebRTC data channel to another game. offer = the caller's OFFER payload when they called us. */
-function p2pLink(B, peer, cid, offer) {
-  const L = { peer, cid, open: false, closed: false, remote: false, cands: [], onopen: null, onmessage: null, onclose: null, dc: null };
-  let pc = null; try { pc = new RTCPeerConnection({ iceServers: p2pCfg().ice }); } catch (e) {}
-  L.send = (s) => { if (L.open && L.dc && L.dc.readyState === 'open') { try { L.dc.send(s); } catch (e) {} } };
-  L.close = () => {
-    if (L.closed) return; L.closed = true; L.open = false;
-    try { if (L.dc) L.dc.close(); } catch (e) {} try { if (pc) pc.close(); } catch (e) {}
-    if (L.onclose) L.onclose();
-  };
-  if (!pc) { setTimeout(L.close, 0); return L; }
-  const sig = (type, payload) => B.send(type, peer, Object.assign({ type: 'data', connectionId: cid }, payload));
-  const flush = async () => { for (const c of L.cands.splice(0)) { try { await pc.addIceCandidate(c); } catch (e) {} } };
-  pc.onicecandidate = (e) => { if (e.candidate && e.candidate.candidate) sig('CANDIDATE', { candidate: e.candidate.toJSON ? e.candidate.toJSON() : e.candidate }); };
-  pc.onconnectionstatechange = () => { if (pc.connectionState === 'failed' || pc.connectionState === 'closed') L.close(); };
-  const useDC = (dc) => {
-    L.dc = dc;
-    dc.onopen = () => { if (L.closed || L.open) return; L.open = true; if (L.onopen) L.onopen(); };
-    dc.onmessage = (e) => { if (typeof e.data === 'string' && L.onmessage) L.onmessage(e.data); };
-    dc.onclose = () => L.close();
-  };
-  L.signal = async (m) => {   // ANSWER / CANDIDATE for this link, through the broker
-    try {
-      const p = m.payload || {};
-      if (m.type === 'ANSWER' && !L.remote && p.sdp) { await pc.setRemoteDescription(p.sdp); L.remote = true; await flush(); }
-      else if (m.type === 'CANDIDATE' && p.candidate) { if (L.remote) { try { await pc.addIceCandidate(p.candidate); } catch (e) {} } else L.cands.push(p.candidate); }
-    } catch (e) { L.close(); }
-  };
-  (async () => {
-    try {
-      if (offer) {
-        pc.ondatachannel = (e) => useDC(e.channel);
-        await pc.setRemoteDescription(offer.sdp); L.remote = true; await flush();
-        const a = await pc.createAnswer(); await pc.setLocalDescription(a);
-        sig('ANSWER', { sdp: { type: a.type, sdp: a.sdp } });
-      } else {
-        useDC(pc.createDataChannel('ojirun', { ordered: true }));
-        const o = await pc.createOffer(); await pc.setLocalDescription(o);
-        sig('OFFER', { sdp: { type: o.type, sdp: o.sdp }, label: 'ojirun', reliable: true, serialization: 'raw', metadata: null });
-      }
-    } catch (e) { L.close(); }
-  })();
-  return L;
-}
-/* A stand-in for the WebSocket that netOpen uses: the same messages, browser to browser. */
-function p2pSocket(code, q) {
-  const S = { p2p: true, readyState: 0, onmessage: null, onclose: null, onerror: null, why: '', impl: null, bye: null, watch: 0, last: 0, sent: 0, isHost: false };
-  S.deliver = (d) => { if (S.readyState === 1 && S.onmessage) S.onmessage({ data: d }); };
-  S.shut = (why) => {
-    if (S.readyState === 3) return;
-    S.readyState = 3; if (why && !S.why) S.why = why; clearInterval(S.watch);
-    if (S.bye) { try { S.bye(); } catch (e) {} }
-    if (S.onclose) S.onclose({ code: 1000, reason: S.why });
-  };
-  S.fail = (c) => { if (S.readyState === 3) return; S.why = c; if (S.onmessage) S.onmessage({ data: JSON.stringify({ t: 'err', code: c }) }); S.shut(c); };
-  S.send = (d) => { if (S.readyState === 1 && S.impl) { S.sent = performance.now(); S.impl(String(d)); } };
-  S.close = () => S.shut('bye');
-  const id = P2P_NS + code.toLowerCase();
-  if (q.create === '1') p2pHost(S, id, code, q, () => S.fail('taken'));
-  else if (q.join === '1') p2pGuest(S, id, q);
-  else p2pHost(S, id, code, q, () => p2pGuest(S, id, q));   // quick match: open the room if nobody has it, otherwise join it
-  return S;
-}
-function p2pHost(S, id, code, q, onTaken) {
-  p2pBroker(id).then((B) => {
-    if (S.readyState === 3) { B.close(); return; }
-    const io = { now: () => Date.now(), setTimer: (ms, fn) => setTimeout(fn, ms), clearTimer: (h) => clearTimeout(h) };
-    // a player whose browser goes quiet for 15 s is dropped (a closed tab does not always say goodbye)
-    const room = new ROOMCORE.RoomCore(code, io, Object.assign({ idleMs: 15000, sweepMs: 3000 }, window.TORCH_ROOM_OPTS)), links = new Map();
-    S.readyState = 1; S.isHost = true; S.room = room; S.links = links;
-    // this game's own player talks to the room like everyone else, just without the network
-    const me = room.join({ send: (s) => queueMicrotask(() => S.deliver(s)), close: () => queueMicrotask(() => S.shut('closed')) }, Object.assign({}, q, { join: '' }));
-    if (!me) { B.close(); return; }
-    Object.defineProperty(me, 'last', { get: () => io.now(), set() {} });   // ...and is never dropped for being quiet (a hidden tab)
-    S.impl = (s) => room.message(me, s);
-    S.bye = () => { room.leave(me); for (const L of Array.from(links.values())) L.close(); links.clear(); B.close(); };
-    B.on = (m) => {
-      const p = m.payload || {}, cid = String(p.connectionId || '');
-      if (m.type === 'OFFER') {   // someone wants in
-        if (!cid || links.has(cid) || links.size >= 16 || !p.sdp) return;
-        const L = p2pLink(B, m.src, cid, p); links.set(cid, L);
-        let who = null;
-        const sock = { send: (s) => L.send(s), close: () => setTimeout(L.close, 400) };
-        const hello = setTimeout(() => { if (!who) L.close(); }, 25000);
-        L.onmessage = (s) => {
-          if (who) { room.message(who, s); return; }
-          let h; try { h = JSON.parse(s); } catch (e) { return; }
-          if (h && h.t === 'hello' && !L.joined) { L.joined = true; clearTimeout(hello); who = room.join(sock, Object.assign({}, h.q && typeof h.q === 'object' ? h.q : {}, { create: '' })); }
-        };
-        L.onclose = () => { clearTimeout(hello); links.delete(cid); if (who) { const w = who; who = null; room.leave(w); } };
-      } else if (m.type === 'LEAVE') { for (const L of Array.from(links.values())) if (L.peer === m.src) L.close(); }
-      else { const L = links.get(cid); if (L && L.peer === m.src) L.signal(m); }
-    };
-  }, (why) => { if (S.readyState === 3) return; if (why === 'taken') onTaken(); else S.fail('broker'); });
-}
-function p2pGuest(S, id, q) {
-  p2pBroker(P2P_NS + 'g' + p2pTok()).then((B) => {
-    if (S.readyState === 3) { B.close(); return; }
-    const cid = 'dc_' + p2pTok(), L = p2pLink(B, id, cid, null);
-    S.bye = () => { L.onclose = null; L.close(); B.close(); };
-    B.on = (m) => {
-      if (m.src !== id) return;
-      if (m.type === 'EXPIRE') { if (!L.open) S.fail('noroom'); return; }   // nobody has that room
-      if (m.type === 'LEAVE') { L.close(); return; }
-      if (m.payload && m.payload.connectionId === cid) L.signal(m);
-    };
-    L.onopen = () => {
-      if (S.readyState !== 0) return;
-      S.readyState = 1; S.impl = (s) => L.send(s); S.last = S.sent = performance.now();
-      L.send(JSON.stringify({ t: 'hello', q: Object.assign({}, q, { create: '' }) }));
-      setTimeout(() => B.close(), 5000);   // connected: the broker is not needed any more
-      S.watch = setInterval(() => {   // keep the link warm, and notice when the host's browser has gone quiet
-        const now = performance.now();
-        if (now - S.sent > 4000) S.send(JSON.stringify({ t: 'ping', c: now }));
-        if (now - S.last > 10000) S.shut('hostgone');
-      }, 2000);
-    };
-    L.onmessage = (s) => { S.last = performance.now(); S.deliver(s); };
-    L.onclose = () => { if (S.readyState === 0) S.fail('nolink'); else S.shut('hostgone'); };
-  }, () => S.fail('broker'));
-}
-
-/* ---------- connecting ---------- */
-function netOpen(code, q) {
-  return new Promise((resolve, reject) => {
-    const s = G.save.settings, base = netServer();
-    q = Object.assign({ ver: String(NET_PROTO), name: netName(), era: String(s.era | 0), short: s.shortCourse ? '1' : '0' }, q || {});
-    let ws;
-    if (base) { try { ws = new WebSocket(base + '/ws?room=' + code + '&' + Object.keys(q).map(k => k + '=' + encodeURIComponent(q[k])).join('&')); } catch (e) { return reject('closed'); } }
-    else if (!p2pOK()) return reject('nortc');
-    else ws = p2pSocket(code, q);
-    let settled = false;
-    const to = setTimeout(() => { if (!settled) { settled = true; try { ws.close(); } catch (e) {} reject(base ? 'closed' : 'nolink'); } }, base ? 9000 : 30000);
-    ws.onmessage = (ev) => {
-      let m; try { m = JSON.parse(ev.data); } catch (e) { return; }
-      if (!settled) {
-        if (m.t === 'err') { settled = true; clearTimeout(to); reject(m.code); if (ws.p2p) setTimeout(() => ws.close(), 600); return; }
-        if (m.t === 'welcome') { settled = true; clearTimeout(to); if (NET.ws && NET.ws !== ws) { try { NET.ws.close(); } catch (e) {} } NET.ws = ws; netWelcome(m); resolve(m); return; }
-      }
-      if (NET.ws === ws) netMsg(m);
-    };
-    ws.onerror = () => {};
-    ws.onclose = () => { if (!settled) { settled = true; clearTimeout(to); reject(ws.why || 'closed'); return; } if (NET.ws === ws) netClosed(ws.why); };
-  });
-}
-async function netQuick() {
-  const p2p = !netServer();
-  for (let i = 1; i <= 12; i++) {
-    try { await netOpen('QUICK' + i, {}); return; } catch (e) { if (e === 'started' || e === 'full' || (p2p && e === 'noroom')) continue; throw e; }
-  }
-  throw 'busy';
-}
-async function netCreate() {
-  for (let k = 0; k < 5; k++) {
-    let code = ''; for (let i = 0; i < 5; i++) code += NET_ALPHA[Math.floor(Math.random() * NET_ALPHA.length)];
-    try { await netOpen(code, { create: '1' }); return; } catch (e) { if (e !== 'taken') throw e; }
-  }
-  throw 'busy';
-}
-async function netJoinCode(code) { await netOpen(code, { join: '1' }); }
-function netWelcome(m) {
-  Object.assign(NET, { on: true, id: m.id, code: m.code, pub: !!m.pub, offset: m.now - performance.now(), rtt: 9999, phase: 'lobby', status: '', pingT: 0, race: null, players: [], host: null });
-  for (let i = 0; i < 4; i++) setTimeout(() => netSend({ t: 'ping', c: performance.now() }), 120 + i * 220);   // a few quick pings settle the clock
-}
-function netLeave() {
-  const ws = NET.ws; NET.ws = null; NET.on = false; NET.race = null; NET.phase = 'off'; NET.players = []; NET.status = '';
-  if (ws) { try { ws.send(JSON.stringify({ t: 'leave' })); } catch (e) {} try { ws.close(1000, 'bye'); } catch (e) {} }
-  if (G.run && G.run.online) G.run.online = false;
-}
-function netClosed(why) {
-  NET.ws = null; NET.on = false; NET.phase = 'off';
-  const R = NET.race;
-  if (R && !R.over && G.run && G.run.online) {   // carry on against the computer: take over the rivals, drop the other players
-    R.offline = true;
-    for (const n of G.npcs.slice()) if (n.human) netDropRival(n);
-    netBecomeHost();
-    toast(LL('通信が切れました。このままコンピューターと走れます。', 'Connection lost. You can keep racing the computer rivals.'));
-  } else NET.race = null;
-  NET.status = netErrText(why === 'hostgone' ? 'hostgone' : 'lost');
-  renderOnline();
-}
-
-/* ---------- messages ---------- */
-function netMsg(m) {
-  const R = NET.race;
-  switch (m.t) {
-    case 'pong': {
-      const now = performance.now(), rtt = now - m.c;
-      if (rtt >= 0 && rtt < NET.rtt * 1.25 + 30) { NET.rtt = Math.min(rtt, NET.rtt === 9999 ? rtt : NET.rtt * 0.8 + rtt * 0.2); NET.offset = m.s - (m.c + rtt / 2); }
-      break;
-    }
-    case 'room': {
-      Object.assign(NET, { players: m.players, host: m.host, cfg: m.cfg, phase: m.phase, autoAt: m.autoAt ? m.autoAt : 0, code: m.code, pub: !!m.pub });
-      if (!G.run) {   // the world behind the lobby shows the room's era
-        const s = G.save.settings;
-        if ((s.era | 0) !== m.cfg.era || !!s.shortCourse !== !!m.cfg.short) { s.era = m.cfg.era; s.shortCourse = !!m.cfg.short; writeSave(); ensureCourse(); }
-      }
-      renderOnline(); break;
-    }
-    case 'go': netGo(m); break;
-    case 'st': if (R) netRemote(m.id, m.s); break;
-    case 'npc': if (R && R.host !== NET.id) for (const b of m.b) netRemote('b' + b[0], b.slice(1)); break;
-    case 'it': if (R) netItemIn(m); break;
-    case 'bg': if (R) netBurrGone(m.id); break;
-    case 'hr': if (R && m.to === NET.id) netHitResult(m); break;
-    case 'fin': {
-      if (!R) break; R.fins[m.id] = m.time;
-      const n = G.npcs.find(q => q.key === m.id);
-      if (n && !n.finished) { n.finished = true; n.finishT = m.time; }
-      break;
-    }
-    case 'left': {
-      NET.host = m.host;
-      if (R && !R.over) {
-        const n = G.npcs.find(q => q.key === m.id);
-        if (n && G.run && G.run.online) { if (!n.finished) toast(LL(n.name + 'が退出しました', n.name + ' left the race')); netDropRival(n); }
-        if (m.host === NET.id && R.host !== NET.id) { R.host = NET.id; netBecomeHost(); }
-      }
-      renderOnline(); break;
-    }
-    case 'results': netResults(m); break;
-  }
-}
-function netGo(m) {
-  const s = G.save.settings;
-  s.era = clamp(m.cfg.era | 0, 0, 8); s.shortCourse = !!m.cfg.short; writeSave();
-  NET.race = { at: m.at, startLocal: m.at - NET.offset, order: m.order, bots: m.bots, host: m.host, fins: {}, burrSeq: 0, over: false, final: null, pending: true, lastStand: 0 };
-  NET.phase = 'race'; NET.status = '';
-  if (!$('modal-confirm').hidden) closeConfirm();
-  $('modal-image').hidden = true;
-  startRun();
-  NET.race.pending = false;
-  const wait = (NET.race.startLocal - performance.now()) / 1000;
-  G.readyT = Math.max(0.4, wait);
-  $('ready-sub').textContent = LL('オンライン対戦　' + NET.race.order.length + '人 ＋ コンピューター ' + m.bots + '人', 'Online race — ' + NET.race.order.length + ' players + ' + m.bots + ' computer');
-  NET.sendT = 0;
-}
-function netResults(m) {
-  const R = NET.race; NET.phase = 'lobby';
-  if (!R) { renderOnline(); return; }
-  R.over = true; R.final = m.list;
-  for (const r of m.list) if (r.time != null) R.fins[r.id] = r.time;
-  if (G.run && G.run.online) {
-    const st = G.state;
-    if (G.playerFinT == null && (st === 'running' || st === 'ready' || st === 'dying' || st === 'paused')) { G.run.result = 'timeup'; showResult(); }
-    else if (st === 'result') netResultPanel();
-    else if (!$('scr-online').hidden) { netEndRace(); return; }
-  }
-  renderOnline();
-}
-function netEndRace() {   // after a race: back to the room with the title scene behind it
-  NET.race = null;
-  if (G.run && G.run.online) { G.run.online = false; goTitle(); }
-  if (NET.on) { showScreen('scr-online'); setState('menu'); renderOnline(); } else goTitle();
-}
-
-/* ---------- runners ---------- */
-function netSnap(r, finT, down) {
-  const p = r.p, f = (p.grounded ? 1 : 0) | (r.buffs.wig > 0 ? 2 : 0) | (r.stumble > 0 ? 4 : 0) | (down ? 8 : 0) | (finT != null ? 16 : 0);
-  const q = (v) => Math.round(v * 100) / 100;
-  return [q(p.z), q(p.x), q(p.y), q(p.vz), q(p.vx), q(p.vy), f, Math.round(r.stamina), Math.round(r.flame), r.cp | 0, finT == null ? null : q(finT)];
-}
-function netRemote(key, s) {
-  const n = G.npcs.find(q => q.key === key); if (!n || !n.remote || !Array.isArray(s)) return;
-  const B = n.remote.buf; B.push({ t: performance.now() + NET.offset, s });
-  if (B.length > 24) B.shift();
-}
-function netInterp(n, rt) {
-  const B = n.remote.buf; if (!B.length) return;
-  let a = B[0], b = B[B.length - 1];
-  for (let i = 0; i < B.length; i++) { if (B[i].t <= rt) a = B[i]; else { b = B[i]; break; } }
-  if (a.t > rt) b = a;
-  const u = b.t > a.t ? clamp((rt - a.t) / (b.t - a.t), 0, 1) : 1, sa = a.s, sb = b.s;
-  const jump = Math.abs((sb[0] || 0) - (sa[0] || 0)) > 10 || Math.abs((sb[2] || 0) - (sa[2] || 0)) > 6;   // a respawn snaps instead of sliding
-  const v = (i) => jump ? (sb[i] || 0) : lerp(sa[i] || 0, sb[i] || 0, u), p = n.run.p;
-  p.z = v(0); p.x = v(1); p.y = v(2); p.vz = v(3); p.vx = v(4); p.vy = v(5);
-  p.prevX = p.x; p.prevY = p.y; p.prevZ = p.z;   // drawn where the report says, no sim-step blending
-  const f = sb[6] | 0, R = n.run;
-  p.grounded = !!(f & 1); R.buffs.wig = f & 2 ? 1 : 0; R.stumble = f & 4 ? 0.2 : 0;
-  R.stamina = sb[7] == null ? 100 : sb[7]; R.flame = sb[8] == null ? 100 : sb[8]; R.cp = sb[9] | 0;
-  const down = !!(f & 8);
-  if (down) { n.lastRes = 'fall'; n.respawnT = 0.5; n.hidden = p.y < CONFIG.body.lavaY + 0.6; } else { n.respawnT = 0; n.hidden = false; }
-  if ((f & 16) && !n.finished) { n.finished = true; n.finishT = sb[10] != null ? sb[10] : netRaceTime(); }
-}
-function netDropRival(n) {
-  const i = G.npcs.indexOf(n); if (i < 0) return;
-  if (n.sprite) scene.remove(n.sprite); if (n.oji) n.oji.root.visible = false; scene.remove(n.blob); n.tagEl.remove(); n.dot.remove();
-  G.npcs.splice(i, 1); hudCache.rankHTML = null;
-}
-function netBecomeHost() {   // the host left: this game now runs the computer rivals, picking up where the reports left them
-  for (const n of G.npcs) {
-    if (!n.remote || n.human) continue;
-    const q = n.run.p, run = T.newRun(G.course), p = run.p;
-    Object.assign(p, { x: q.x, y: Math.max(q.y, 0), z: q.z, prevX: q.x, prevY: Math.max(q.y, 0), prevZ: q.z, vz: q.vz, vx: 0, vy: 0, grounded: true });
-    run.cp = n.run.cp; run.stamina = n.run.stamina; run.flame = Math.max(30, n.run.flame); run.momentum = 1.5;
-    const s = T.supportAt(G.course, q.z, 50); if (!s) { T.resetForRetry(run); } else { p.y = p.prevY = s.y; run.lastSafe = { x: 0, y: s.y, z: q.z }; }
-    n.run = run; n.bot = T.makeBot(Object.assign({}, n.def.policy)); n.remote = null; n.respawnT = 0; n.hidden = false;
-  }
-}
-
-/* ---------- every frame ---------- */
-function netTick(dt) {
-  if (!NET.ws) return;
-  const now = performance.now();
-  if (now > NET.pingT) { NET.pingT = now + (NET.race ? 4000 : 2500); netSend({ t: 'ping', c: now }); }
-  if (!$('scr-online').hidden && now > (NET.uiT || 0)) { NET.uiT = now + 500; renderOnline(); }
-  const R = NET.race; if (!R || !G.run || !G.run.online) return;
-  if (!R.over) {
-    const rt = now + NET.offset - 140;   // replay the others a little behind real time so their motion stays smooth
-    for (const n of G.npcs) if (n.remote) netInterp(n, rt);
-    // the host keeps the computer rivals running while its own player is not (falling, counting down, finished)
-    if (R.host === NET.id && G.state !== 'running' && now >= R.startLocal) { R.botAcc = (R.botAcc || 0) + dt; let k = 0; while (R.botAcc >= STEP && k++ < 10) { stepRivals(); R.botAcc -= STEP; } } else R.botAcc = 0;
-    if (now >= NET.sendT) {
-      NET.sendT = now + 100;
-      netSend({ t: 'st', s: netSnap(G.run, G.playerFinT, G.state === 'dying') });
-      if (R.host === NET.id) { const b = G.npcs.filter(n => n.botIdx != null && !n.remote).map(n => [n.botIdx].concat(netSnap(n.run, n.finished ? n.finishT : null, n.respawnT > 0))); if (b.length) netSend({ t: 'npc', b }); }
-    }
-  }
-  if (G.state === 'result' && now > R.lastStand + 500) { R.lastStand = now; netResultPanel(); }
-}
-
-/* ---------- items across the network ---------- */
-const netKey = (u) => u.me ? NET.id : u.n.key;
-const netAuth = (u) => !onlineRun() || u.me || !!(u.n && !u.n.remote);   // does this game decide what happens to this runner?
-function netUnit(key) {
-  if (key === NET.id) return G.run ? { me: true, n: null, r: G.run, name: LL('あなた', 'You') } : null;
-  const n = G.npcs.find(q => q.key === key); return n ? { me: false, n, r: n.run, name: n.name } : null;
-}
-function netItemOut(u, kind, extra) {   // tell the others about an item this game used
-  if (!onlineRun() || !netAuth(u)) return;
-  netSend(Object.assign({ t: 'it', k: kind, u: netKey(u) }, extra || {}));
-}
-function netItemIn(m) {
-  if (!G.ch || !G.run || !G.run.online) return;
-  const u = netUnit(m.u); if (!u || u.me) return;
-  chUse(u, m.k, chRunners(), m);
-}
-function netBurrGone(id) {
-  const C = G.ch; if (!C) return;
-  const i = C.burrs.findIndex(b => b.id === id); if (i < 0) return;
-  const b = C.burrs[i]; C.burrs.splice(i, 1); C.root.remove(b.mesh); dust(b.x, b.y, b.z, 5);
-}
-function netHitResult(m) {
-  const C = G.ch; if (!C || !m.k) return;
-  const t = netUnit(m.u), name = t ? t.name : '?';
-  if (m.w) toast(LL(name + 'はカツラで無敵だった…', name + ' is wearing a wig — no effect'));
-  else { C.hits++; toast(LL(name + 'に' + CH_NAME[m.k][0] + 'が命中！', CH_NAME[m.k][1] + ' hit ' + name + '!')); Snd.sting('overtake'); G.hypeT = Math.max(G.hypeT || 0, 2); }
-}
-
-/* ---------- result screen ---------- */
-function netResultPanel() {
-  const R = NET.race; if (!R || !G.run) return;
-  $('r-stand').innerHTML = standingsHTML(standings(), true); $('r-stand').hidden = false;
-  const left = G.npcs.filter(n => n.human && !n.finished).length;
-  let t;
-  if (!NET.ws) t = LL('通信が切れました。', 'Disconnected.');
-  else if (!R.over) t = left ? LL('まだ ' + left + '人が走っています…', left + ' still running…') : LL('結果を待っています…', 'Waiting for the results…');
-  else { t = LL('レース終了！', 'Race over!'); if (NET.pub && NET.autoAt) { const sec = Math.max(0, Math.ceil((NET.autoAt - (performance.now() + NET.offset)) / 1000)); t += LL('　次のレースまで ' + sec + ' 秒', '  Next race in ' + sec + ' s'); } }
-  $('r-net').textContent = t; $('r-net').hidden = false;
-}
-
-/* ---------- the online screen ---------- */
-function openOnline() {
-  Snd.play('ui');
-  if (NET.race && NET.race.over) { netEndRace(); return; }
-  showScreen('scr-online'); setState('menu'); renderOnline();
-  setTimeout(() => { const b = NET.ws ? ($('on-start').hidden ? $('on-leave') : $('on-start')) : $('on-quick'); if (b && !b.hidden) b.focus(); }, 30);
-}
-function renderOnline() {
-  const scr = $('scr-online'); if (!scr || scr.hidden) return;
-  const inRoom = !!(NET.ws && NET.on), host = NET.host === NET.id, lobby = NET.phase === 'lobby';
-  $('on-join').hidden = inRoom; $('on-room').hidden = !inRoom; $('on-leave').hidden = !inRoom; $('on-adv').hidden = inRoom;
-  $('on-start').hidden = !(inRoom && host && lobby);
-  $('on-status').textContent = NET.status || ''; $('on-status').hidden = !NET.status;
-  const srv = netServer(), can = !!srv || p2pOK(), hint = $('on-noserver');
-  let ht = '';
-  if (!can) ht = netErrText('nortc');
-  else if (!srv && !inRoom) ht = LL('サーバーの準備はいりません。部屋を作った人のブラウザが中継役になります。', 'No server needed: the player who opens a room hosts it in their own browser.');
-  else if (!srv && inRoom && NET.ws && NET.ws.isHost) ht = LL('あなたのブラウザがこの部屋の中継役です。レースが終わるまでこのページを開いたままにしてください。', 'Your browser is hosting this room. Keep this page open until the race is over.');
-  if (hint.textContent !== ht) hint.textContent = ht;
-  hint.hidden = !ht;
-  ['on-quick', 'on-create', 'on-joinbtn'].forEach(id => $(id).disabled = !can || !!NET.busy);
-  if (!inRoom) {
-    if (document.activeElement !== $('on-name')) $('on-name').value = netName();
-    if (document.activeElement !== $('on-server')) $('on-server').value = G.save.settings.server || '';
-    $('on-code').placeholder = LL('部屋コード（5文字）で参加', 'Join with a 5-letter room code'); $('on-server').placeholder = 'https://kigenzen-ojirun-online.xxxx.workers.dev';
-    return;
-  }
-  $('on-roomcode').textContent = NET.pub ? LL('クイック対戦', 'Quick match') : NET.code;
-  $('on-copy').hidden = NET.pub;
-  const P = NET.players || [], nb = P.length ? clamp(NET_MAX - P.length, 0, RIVALS.length) : 0;
-  let html = P.map(p => '<li class="' + (p.id === NET.id ? 'me' : '') + '"><span class="on-dot"></span><b>' + escHTML(p.name) + '</b>' + (p.id === NET.host ? '<span class="on-tag">' + LL('ホスト', 'Host') + '</span>' : '') + (p.id === NET.id ? '<span class="on-tag me">' + LL('あなた', 'You') + '</span>' : '') + '</li>').join('');
-  for (let j = 0; j < nb; j++) html += '<li class="cpu"><span class="on-dot" style="background:' + RIVALS[j].color + '"></span>' + LL('コンピューター', 'Computer') + '<small>' + LL(RIVALS[j].name, RIVALS[j].en) + '</small></li>';
-  $('on-list').innerHTML = html;
-  const sel = $('on-era');
-  if (sel.options.length !== 9) sel.innerHTML = ERAS.map((e, i) => '<option value="' + i + '">' + eraLabel(i) + '</option>').join('');
-  else for (let i = 0; i < 9; i++) sel.options[i].textContent = eraLabel(i);
-  sel.value = String(NET.cfg.era | 0); sel.disabled = !(host && lobby);
-  $('on-std').setAttribute('aria-pressed', String(!NET.cfg.short)); $('on-short').setAttribute('aria-pressed', String(!!NET.cfg.short));
-  $('on-std').disabled = $('on-short').disabled = !(host && lobby);
-  let w;
-  if (NET.phase === 'race') w = NET.race && G.run && G.run.online ? LL('レース中です。終わると結果が届きます。', 'Racing. The results arrive when everyone is in.') : LL('この部屋はいまレース中です。終わるまでお待ちください。', 'This room is racing. Wait for the race to end.');
-  else if (NET.pub && NET.autoAt) { const sec = Math.max(0, Math.ceil((NET.autoAt - (performance.now() + NET.offset)) / 1000)); w = LL('あと ' + sec + ' 秒でスタート', 'Starting in ' + sec + ' s') + (host ? LL('（ホストはすぐスタートできます）', ' (the host can start now)') : ''); }
-  else if (NET.pub) w = LL('ほかのプレイヤーを待っています…　ひとりでもスタートすればコンピューターと走れます。', 'Waiting for other players… Start now to race the computer.');
-  else if (host) w = P.length < 2 ? LL('部屋コードを友だちに教えてください。そろったらスタート。', 'Send the room code to your friends, then start.') : LL('そろったらスタートを押してください。', 'Press start when everyone is here.');
-  else w = LL('ホストがスタートするのを待っています…', 'Waiting for the host to start…');
-  $('on-wait').textContent = w;
-}
-const escHTML = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-async function netTry(fn) {
-  if (NET.busy) return;
-  NET.busy = true; NET.status = LL('接続しています…', 'Connecting…'); renderOnline();
-  try { await fn(); NET.status = ''; Snd.play('ui'); }
-  catch (e) { NET.status = netErrText(typeof e === 'string' ? e : 'closed'); Snd.play('back'); }
-  NET.busy = false; renderOnline();
-  if (NET.ws) setTimeout(() => { const b = $('on-start').hidden ? $('on-leave') : $('on-start'); if (b) b.focus(); }, 30);
-}
-
-function netQuitAsk() {
-  askConfirm(LL('レースから退出しますか？', 'Leave the race?'), LL('オンライン対戦はポーズできません。レースは続いています。退出すると部屋からも抜けます。', 'Online races can’t be paused — the race goes on. Leaving also takes you out of the room.'), LL('退出する', 'Leave'), () => { netLeave(); goTitle(); });
-}
-click('btn-online', () => openOnline());
-click('on-back', () => { Snd.play('back'); if (NET.race && !NET.race.over && G.run && G.run.online) { netLeave(); } goTitle(); });
-click('on-quick', () => netTry(netQuick));
-click('on-create', () => netTry(netCreate));
-click('on-joinbtn', () => {
-  const code = $('on-code').value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-  if (code.length !== 5) { NET.status = LL('5文字の部屋コードを入れてください。', 'Enter the 5-letter room code.'); renderOnline(); $('on-code').focus(); return; }
-  netTry(() => netJoinCode(code));
-});
-click('on-leave', () => { Snd.play('back'); netLeave(); NET.status = ''; if (G.run) goTitle(); showScreen('scr-online'); setState('menu'); renderOnline(); });
-click('on-start', () => { if (NET.host === NET.id && NET.phase === 'lobby') { Snd.play('ui'); netSend({ t: 'start' }); } });
-click('on-copy', () => { const t = NET.code || ''; try { navigator.clipboard.writeText(t).then(() => toastMenu(LL('部屋コードをコピーしました：', 'Room code copied: ') + t), () => toastMenu(t)); } catch (e) { toastMenu(t); } });
-click('on-std', () => { if (NET.host === NET.id) netSend({ t: 'cfg', era: NET.cfg.era, short: false }); });
-click('on-short', () => { if (NET.host === NET.id) netSend({ t: 'cfg', era: NET.cfg.era, short: true }); });
-$('on-era').addEventListener('change', () => { if (NET.host === NET.id) netSend({ t: 'cfg', era: +$('on-era').value, short: !!NET.cfg.short }); });
-$('on-name').addEventListener('change', () => { const v = $('on-name').value.replace(/[<>&"'`\\]/g, '').trim().slice(0, 12); if (v) { G.save.settings.nick = v; writeSave(); } $('on-name').value = netName(); });
-$('on-server').addEventListener('change', () => { G.save.settings.server = $('on-server').value.trim(); writeSave(); NET.status = ''; renderOnline(); });
-addEventListener('pagehide', () => { if (NET.ws && NET.ws.p2p) netLeave(); });   // closing the page: tell the room (or close it) right away
-$('on-code').addEventListener('input', () => { const el = $('on-code'), v = el.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 5); if (el.value !== v) el.value = v; });
-click('r-lobby', resultGuard(() => {
-  Snd.play('ui');
-  if (NET.race && NET.race.over) { netEndRace(); return; }
-  if (!NET.ws) { NET.race = null; goTitle(); return; }
-  showScreen('scr-online'); setState('menu'); renderOnline();   // the race goes on in the background until the results arrive
-}));
-
 /* ======================= BOOT ======================= */
 async function start() {
   applyQuality();
@@ -6677,7 +5826,7 @@ async function start() {
   G.last = performance.now();
   requestAnimationFrame(frame);
 }
-window.__torch = { G, T, simulate: T.simulate, startRun, retryRun, goTitle, showResult, Input, ARTX, Snd, wearWig, dropWig, snapshotOjisan, NET, netServer, netQuick, netCreate, netJoinCode, netLeave, openOnline, standings, p2pOK, netMode: () => netServer() ? 'server' : 'p2p' };
+window.__torch = { G, T, simulate: T.simulate, startRun, retryRun, goTitle, showResult, Input, ARTX, Snd, wearWig, dropWig, snapshotOjisan };
 if (window.claude && window.claude.hot && window.claude.hot.ready) window.claude.hot.ready(start); else start();
 })();
 </script>
