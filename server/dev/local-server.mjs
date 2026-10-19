@@ -6,7 +6,10 @@
      node dev/local-server.mjs --port 9000
      node dev/local-server.mjs --game ../dist/index.html
          also serves the game at http://<this computer>:8787/ , already pointed at this server,
-         so everyone on the same Wi-Fi can open that address and race. */
+         so everyone on the same Wi-Fi can open that address and race.
+     node dev/local-server.mjs --game ../dist/index.html --p2p
+         the same, but the games race browser to browser (as on the web) and this computer stands in for
+         the public PeerJS broker at /peerjs, so it works on a network with no internet. */
 import http from 'node:http';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -20,6 +23,7 @@ const PORT = parseInt(arg('--port', process.env.PORT || '8787'), 10);
 const HOST = arg('--host', '0.0.0.0');
 const GAME = arg('--game', '');
 const FAST = args.includes('--fast');   // tests: short timers
+const P2P = args.includes('--p2p');     // --game: browser-to-browser rooms through the broker below
 const here = path.dirname(fileURLToPath(import.meta.url));
 
 const opts = FAST ? { lobbyAutoMs: 1500, fullAutoMs: 800, afterRaceAutoMs: 3000, goDelayMs: 1500, finishGraceMs: 15000, idleMs: 8000, sweepMs: 1000 } : {};
@@ -85,7 +89,8 @@ const TYPES = { '.js': 'application/javascript', '.txt': 'text/plain; charset=ut
 if (GAME) {
   const file = path.resolve(process.cwd(), GAME); gameDir = path.dirname(file);
   const html = fs.readFileSync(file, 'utf8');
-  const inject = "<script>window.TORCH_SERVER = location.origin.replace(/^http/, 'ws');</script>";
+  const inject = P2P ? "<script>window.TORCH_PEER = { host: location.hostname, port: +location.port || (location.protocol === 'https:' ? 443 : 80), secure: location.protocol === 'https:' };</script>"
+    : "<script>window.TORCH_SERVER = location.origin.replace(/^http/, 'ws');</script>";
   gameHTML = html.includes('<head>') ? html.replace('<head>', '<head>' + inject) : inject + html;
   console.log('serving the game from', file);
 }
@@ -100,8 +105,40 @@ const server = http.createServer((req, res) => {
   }
   res.writeHead(404, { 'Content-Type': 'application/json' }); res.end('{"ok":false}');
 });
+/* ---------- a stand-in for the PeerJS broker (PeerServer protocol), for browser-to-browser rooms ----------
+   Each game holds one WebSocket here under its id. OFFER / ANSWER / CANDIDATE go to "dst"; a message for an id
+   that is not here waits a moment, then the sender gets EXPIRE. */
+const peers = new Map(), waiting = new Map(), EXPIRE_MS = FAST ? 1500 : 5000;
+function broker(url, req, socket, head) {
+  const id = url.searchParams.get('id') || '', token = url.searchParams.get('token') || '', key = url.searchParams.get('key') || '';
+  const ws = acceptWebSocket(req, socket, head); if (!ws) return;
+  if (!id || !token || !key) { ws.send(JSON.stringify({ type: 'ERROR', payload: { msg: 'No id, token, or key supplied to websocket server' } })); ws.close(1000); return; }
+  const cur = peers.get(id);
+  if (cur && cur.token !== token) { ws.send(JSON.stringify({ type: 'ID-TAKEN', payload: { msg: 'ID is taken' } })); ws.close(1000); return; }
+  const me = { id, token, ws }; peers.set(id, me);
+  if (!cur) ws.send('{"type":"OPEN"}');
+  const w = waiting.get(id); if (w) { waiting.delete(id); for (const e of w) ws.send(JSON.stringify(e.msg)); }
+  ws.onmessage = (s) => {
+    let m; try { m = JSON.parse(s); } catch (e) { return; }
+    if (!m || !['OFFER', 'ANSWER', 'CANDIDATE', 'LEAVE', 'EXPIRE'].includes(m.type)) return;
+    const msg = { type: m.type, src: id, dst: m.dst, payload: m.payload }, to = peers.get(m.dst);
+    if (to) to.ws.send(JSON.stringify(msg));
+    else if (m.dst && m.type !== 'LEAVE' && m.type !== 'EXPIRE') { const l = waiting.get(m.dst) || []; l.push({ msg, at: Date.now() }); waiting.set(m.dst, l); }
+  };
+  ws.onclose = () => { if (peers.get(id) === me) peers.delete(id); };
+}
+setInterval(() => {
+  const now = Date.now();
+  for (const [dst, l] of waiting) {
+    if (now - l[0].at < EXPIRE_MS) continue;
+    waiting.delete(dst);
+    for (const src of new Set(l.map(e => e.msg.src))) { const p = peers.get(src); if (p) p.ws.send(JSON.stringify({ type: 'EXPIRE', src: dst, dst: src })); }
+  }
+}, 500).unref();
+
 server.on('upgrade', (req, socket, head) => {
   const url = new URL(req.url, 'http://x');
+  if (url.pathname === '/peerjs') { broker(url, req, socket, head); return; }
   const code = String(url.searchParams.get('room') || '').toUpperCase();
   if (url.pathname !== '/ws' || !validCode(code)) { socket.write('HTTP/1.1 400 Bad Request\r\n\r\n'); socket.destroy(); return; }
   const ws = acceptWebSocket(req, socket, head); if (!ws) return;
@@ -113,5 +150,5 @@ server.on('upgrade', (req, socket, head) => {
 });
 server.listen(PORT, HOST, () => {
   console.log('紀元前おじラン！ online server: ws://localhost:' + PORT + (FAST ? '  (fast timers)' : ''));
-  if (GAME) console.log('game: http://localhost:' + PORT + '/   (others on your network: http://<this computer\'s address>:' + PORT + '/)');
+  if (GAME) console.log('game: http://localhost:' + PORT + '/   (others on your network: http://<this computer\'s address>:' + PORT + '/)' + (P2P ? '  browser to browser' : ''));
 });
